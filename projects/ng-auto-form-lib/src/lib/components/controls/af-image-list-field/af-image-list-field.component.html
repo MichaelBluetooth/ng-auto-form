@@ -1,0 +1,9 @@
+<div class="selected-values">
+  <img *ngFor="let value of selectedValue" class="selected-value" [ngClass]="{'clickable': !readOnly && !disabled}" width="100px" [src]="getUrlForValue(value)" (click)="removeValue(value)"/>
+</div>
+<button type="button" *ngIf="!readOnly" class="btn btn-default" [disabled]="selectableOptions.length === 0 || disabled" (click)="toggleOptionsPane()">{{getButtonText()}}</button>
+<div *ngIf="!readOnly && showOptionsPane && selectableOptions.length > 0" class="options-pane">
+  <div *ngFor="let opt of selectableOptions" class="option clickable" (click)="selectValue(opt.value)">
+    <img class="option-img" width="100px" [src]="opt.imageUrl" /> {{opt.value}}
+  </div>
+</div>

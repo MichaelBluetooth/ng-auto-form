@@ -1,0 +1,161 @@
+<h2>ImageList Field</h2>
+<p>An image list field is a control that will display a set of images and some text.</p>
+<div>
+  <af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData"></af-form>
+  <button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+  <tabset>
+    <tab heading="Template">
+      <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+    </tab>
+    <tab heading="Component">
+      <pre>
+        <code>
+          import {{'{'}} Component, OnInit {{'}'}} from &#x27;@angular/core&#x27;;
+    
+          @Component({{'{'}}
+            selector: &#x27;app-image-list-field-example&#x27;,
+            templateUrl: &#x27;./image-list-field-example.component.html&#x27;,
+            styleUrls: [&#x27;./image-list-field-example.component.css&#x27;]
+          })
+          export class ImageListFieldExampleComponent {{'{'}}
+          
+            myFormData = {{'{'}}
+              imageListField: &#x27;value1&#x27;
+            {{'}'}};
+          
+            myFormDefinition = {{'{'}}
+              layout: [[&#x27;imageListField&#x27;]],
+              fields: [
+                {{'{'}}
+                  name: &#x27;imageListField&#x27;,
+                  fieldType: &#x27;ImageList&#x27;,
+                  label: &#x27;Image List (Single Select)&#x27;,
+                  imageOptions: [
+                    {{'{'}} value: &#x27;value1&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; {{'}'}},
+                    {{'{'}} value: &#x27;value2&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; },
+                    {{'{'}} value: &#x27;value3&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; {{'}'}},
+                    {{'{'}} value: &#x27;value4&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; {{'}'}}
+                  ]
+                {{'}'}}
+              ]
+            {{'}'}};
+          {{'}'}}               
+        </code>
+      </pre>
+    </tab>
+  </tabset>
+</div>
+
+<h3>Multi Select</h3>
+<p>In some cases, you may require the user to have the ability to select more than one option. You can configure this by setting the 'isMultiple' flag on the image select field.</p>
+<div>
+  <af-form [formDefinition]="myFormDefinitionMultiSelect" [(formData)]="myFormDataMultiSelect"></af-form>
+  <button class="btn btn-primary" (click)="printFormDataMultiSelect()">Print Form Data</button>
+  <tabset>
+    <tab heading="Template">
+      <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+    </tab>
+    <tab heading="Component">
+      <pre>
+        <code>
+          import {{'{'}} Component, OnInit {{'}'}} from &#x27;@angular/core&#x27;;
+    
+          @Component({{'{'}}
+            selector: &#x27;app-image-list-field-example&#x27;,
+            templateUrl: &#x27;./image-list-field-example.component.html&#x27;,
+            styleUrls: [&#x27;./image-list-field-example.component.css&#x27;]
+          })
+          export class ImageListFieldExampleComponent {{'{'}}
+          
+          myFormDataMultiSelect = {{'{'}}
+              imageListField: [&#x27;value2&#x27;, &#x27;value3&#x27;]
+            {{'}'}};
+          
+            myFormDefinitionMultiSelect = {{'{'}}
+              layout: [&#x27;imageListField&#x27;]],
+              fields: [
+                {{'{'}}
+                  name: &#x27;imageListField&#x27;,
+                  fieldType: &#x27;ImageList&#x27;,
+                  label: &#x27;Image List (Multi-Select)&#x27;,
+                  isMultiple: true,
+                  imageOptions: [
+                    {{'{'}} value: &#x27;value1&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; {{'}'}},
+                    {{'{'}} value: &#x27;value2&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; {{'}'}},
+                    {{'{'}} value: &#x27;value3&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; {{'}'}},
+                    {{'{'}} value: &#x27;value4&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; {{'}'}}
+                  ]
+                {{'}'}}
+              ]
+            {{'}'}};
+          {{'}'}}               
+        </code>
+      </pre>
+    </tab>
+  </tabset>
+</div>
+
+<h3>Validations</h3>
+<p>Validations can be automatically applied to image list fields.</p>
+<div>
+  <af-form [formDefinition]="myFormDefinitionValidation" [(formData)]="myFormDataValidation"></af-form>
+  <button class="btn btn-primary" (click)="printFormDataMultiSelect()">Print Form Data</button>
+  <tabset>
+    <tab heading="Template">
+      <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+    </tab>
+    <tab heading="Component">
+      <pre>
+        <code>
+            import {{'{'}} Component, OnInit {{'}'}} from &#x27;@angular/core&#x27;;
+    
+            @Component({{'{'}}
+              selector: &#x27;app-image-list-field-example&#x27;,
+              templateUrl: &#x27;./image-list-field-example.component.html&#x27;,
+              styleUrls: [&#x27;./image-list-field-example.component.css&#x27;]
+            })
+            export class ImageListFieldExampleComponent {{'{'}}
+            
+                myFormDataValidation = {{'{'}}
+                  imageListField: &#x27;&#x27;
+                {{'}'}};
+                
+                myFormDefinitionValidation = {{'{'}}
+                  layout: [[&#x27;imageListField&#x27;]],
+                  fields: [
+                    {{'{'}}
+                      name: &#x27;imageListField&#x27;,
+                      fieldType: &#x27;ImageList&#x27;,
+                      label: &#x27;Image List (With Validation)&#x27;,
+                      validations: [{{'{'}}name: &#x27;Required&#x27;{{'}'}}],
+                      imageOptions: [
+                        {{'{'}} value: &#x27;value1&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; {{'}'}},
+                        {{'{'}} value: &#x27;value2&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; {{'}'}},
+                        {{'{'}} value: &#x27;value3&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; {{'}'}},
+                        {{'{'}} value: &#x27;value4&#x27;, imageUrl: &#x27;https://via.placeholder.com/150x150&#x27; {{'}'}}
+                      ]
+                    {{'}'}}
+                  ]
+                {{'}'}};
+            
+            {{'}'}}           
+        </code>
+      </pre>
+    </tab>
+  </tabset>
+</div>

@@ -1,20 +1,24 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="header bg-primary">
+  <a href="#" [routerLink]="['/getting-started']">NG-Auto-Form</a>
+  <a href="#"><i class="fa fa-github float-right" aria-hidden="true"></i></a>
+  <span class="float-right">v1</span>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div class="sidenav header-padding d-none d-sm-block">
+  <a href="#" [routerLink]="['/getting-started']">Getting Started</a>
+  <span class="sidenav-section-header">Fields</span>
+  <a href="#" [routerLink]="['/fields/text']">Text</a>
+  <a href="#" [routerLink]="['/fields/memo']">Memo</a>
+  <a href="#" [routerLink]="['/fields/list']">List Field</a>
+  <a href="#" [routerLink]="['/fields/logical']">Logical Field</a>
+  <a href="#" [routerLink]="['/fields/number']">Number Field</a>
+  <a href="#" [routerLink]="['/fields/multilist']">Multi List</a>
+  <a href="#" [routerLink]="['/fields/imagelist']">Image List</a>
+  <a href="#" [routerLink]="['/fields/casno']">CAS Number</a>
+  <a href="#" [routerLink]="['/fields/nfpa']">NFPA</a>
+  <a href="#" [routerLink]="['/fields/relationship']">Relationship</a>
+</div>
+<div class="main header-padding">
+  <div class="container float-left">
+    <router-outlet></router-outlet>
+  </div>
+</div>

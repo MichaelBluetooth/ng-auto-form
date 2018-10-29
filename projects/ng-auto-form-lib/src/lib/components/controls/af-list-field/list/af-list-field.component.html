@@ -1,0 +1,9 @@
+<select [afFocus]="focus" *ngIf="!readOnly" class="form-control" [disabled]="disabled" [ngModel]="selectedValue" (ngModelChange)="onValueChange($event)"
+  [size]="size">
+  <option *ngFor="let opt of listOpts | afTransformListOptions:displayFieldName:valueFieldName" [ngValue]="opt.value">
+    {{opt.display}}
+  </option>
+</select>
+<div *ngIf="readOnly">
+  <div class="display-item" *ngFor="let display of getDisplayValues()">{{display}}</div>
+</div>

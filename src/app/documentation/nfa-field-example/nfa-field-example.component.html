@@ -1,0 +1,54 @@
+<h2>NFPA Field</h2>
+<p>An NFPA field displays an <a href="https://en.wikipedia.org/wiki/NFPA_704">NFPA diamond</a> and allows users to select values for the flammability, health, instability (sometimes known as "reactivity") and  special codes.</p>
+<af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<tabset>
+  <tab heading="Template">
+    <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+    <pre>
+        <code>
+            import {{'{'}} Component, OnInit {{'}'}} from &#x27;@angular/core&#x27;;
+    
+            @Component({{'{'}}
+              selector: &#x27;app-nfa-field-example&#x27;,
+              templateUrl: &#x27;./nfa-field-example.component.html&#x27;,
+              styleUrls: [&#x27;./nfa-field-example.component.css&#x27;]
+            {{'}'}})
+            export class NfaFieldExampleComponent {{'{'}}
+            
+              myFormData = {{'{'}}
+                listField: {{'{'}}
+                  flamibility: 1,
+                  health: 2,
+                  instability: 3,
+                  special: &#x27;ACID&#x27;
+                {{'}'}}
+              {{'}'}};
+            
+              myFormDefinition = {{'{'}}
+                layout: [[&#x27;nfpaField&#x27;]],
+                fields: [
+                  {{'{'}}
+                    name: &#x27;nfpaField&#x27;,
+                    fieldType: &#x27;NFPA&#x27;,
+                    label: &#x27;NFPA Label&#x27;
+                  {{'}'}}
+                ]
+              {{'}'}};
+            
+              printFormData(): void {{'{'}}
+                alert(&#x27;Look at the console to view the form data that was printed to the console!&#x27;);
+                console.log(this.myFormData);
+              {{'}'}}
+            {{'}'}}        
+        </code>
+      </pre>
+  </tab>
+</tabset>

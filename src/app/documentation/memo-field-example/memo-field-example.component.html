@@ -1,0 +1,43 @@
+<h2>Memo Field</h2>
+<p>A memo field displays a text area. It's best used when the text value is very long.</p>
+<af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<tabset>
+  <tab heading="Template">
+    <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+    <pre>
+        <code>
+          import {{'{'}} Component {{'}'}} from &#x27;@angular/core&#x27;;
+
+          @Component({{'{'}}
+            selector: &#x27;text-example&#x27;,
+            templateUrl: &#x27;./text-field-example.component.html&#x27;
+          })
+          export class MemoExampleComponent {{'{'}}
+
+            myFormData = {{'{'}}
+            memoField: &#x27;Some really long text could go right here in this spot&#x27;
+            {{'}'}};
+
+            myFormDefinition = {{'{'}}
+              layout: [[&#x27;textField&#x27;]],
+              fields: [
+                {{'{'}}
+                  name: &#x27;textField&#x27;,
+                  fieldType: &#x27;Text&#x27;,
+                  label: &#x27;Text Field Label&#x27;
+                {{'}'}}
+              ]
+            {{'}'}}
+          {{'}'}}    
+        </code>
+      </pre>
+  </tab>
+</tabset>

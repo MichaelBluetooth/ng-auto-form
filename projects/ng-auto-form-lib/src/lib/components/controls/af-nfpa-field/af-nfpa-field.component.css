@@ -1,0 +1,68 @@
+.nfpa-container {
+    border: 4px solid black;
+    content: "";
+    display: table;
+    clear: both;
+    transform: rotate(-45deg);
+    margin: 30px;
+}
+
+.nfpa-code {
+    float: left;
+    width: 50%;
+    position: relative;
+    border: 1px solid black;
+}
+
+.nfpa-opt {
+    width: 50px;
+    height: 100px;
+}
+
+.nfpa-health {
+    background-color: blue;
+}
+
+.nfpa-flamibility {
+    background-color: red;
+}
+
+.nfpa-instability {
+    background-color: yellow;
+}
+
+.nfpa-special {
+    background-color: white;
+}
+
+.nfpa-control {
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 30%;
+    width: 65px;
+    margin: -15% 0 0 -25%;
+}
+
+.nfpa-text {
+    font-size: 25px;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 65%;
+    left: 65%;
+    height: 30%;
+    width: 65px;
+    margin: -15% 0 0 -25%;
+}
+
+.nfpa-special-text {
+    font-size: 25px;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    height: 30%;
+    width: 65px;
+    margin: -15% 0 0 -25%;
+}

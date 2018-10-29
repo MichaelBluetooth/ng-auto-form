@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="options-wrapper">
+    <div>
+      <ul class="list-group list-group-flush">
+        <li class="option-wrapper" class="list-group-item option" *ngFor="let option of options; let idx = index" (click)="select(option)">
+          <button (click)="select(option)">{{getOptionDisplayName(option)}}</button>
+        </li>
+        <li class="list-group-item" *ngIf="options.length === 0">
+          <i>No results found</i>
+        </li>
+        <li class="list-group-item" *ngIf="truncated">
+          <b><i>Results Truncated</i></b>
+        </li>
+      </ul>      
+    </div>
+  </div>
+</div>

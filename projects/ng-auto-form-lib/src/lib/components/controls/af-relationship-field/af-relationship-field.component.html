@@ -1,0 +1,13 @@
+<div *ngIf="readOnly">{{getReadOnlyDisplayValue(innerValue)}}</div>
+<div class="input-group" *ngIf="!readOnly">
+  <input type="text" class="form-control" placeholder="Type to search..." [afFocus]="focus" [disabled]="disabled" [value]="getReadOnlyDisplayValue(innerValue)" (keyup)="keyUp.next($event)"
+    (focus)="showRelationshipOptions()" />
+  <div class="input-add-on">
+    <span *ngIf="!waiting" class="fa fa-caret-down" aria-hidden="true" (click)="showRelationshipOptions()"></span>
+  </div>
+  <div class="spinner-add-on">
+    <span *ngIf="waiting" class="fa fa-spinner fa-spin" aria-hidden="true"></span>
+  </div>
+</div>
+<af-relationship-options class="options" *ngIf="displayOptionsPanel" [displayNameField]="displayNameField" [relationshipServiceConfig]="relationshipServiceConfig"
+  [filterValue]="filterValue" (optionSelected)="select($event)" (waiting)="startWaiting()" (waitingStop)="stopWaiting()"></af-relationship-options>

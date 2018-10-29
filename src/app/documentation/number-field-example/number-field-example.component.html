@@ -1,0 +1,43 @@
+<h2>Number Field</h2>
+<p>Number fields display a control that prevent users from entering anything but numbers. Try entering non-numeric values to see how the field reacts.</p>
+<af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<tabset>
+  <tab heading="Template">
+    <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+    <pre>
+        <code>
+          import {{'{'}} Component {{'}'}} from &#x27;@angular/core&#x27;;
+
+          @Component({{'{'}}
+            selector: &#x27;number-example&#x27;,
+            templateUrl: &#x27;./number-field-example.component.html&#x27;
+          })
+          export class NumberExampleComponent {{'{'}}
+
+            myFormData = {{'{'}}
+              numberField: &#x27;42&#x27;
+            {{'}'}};
+
+            myFormDefinition = {{'{'}}
+              layout: [[&#x27;numberField&#x27;]],
+              fields: [
+                {{'{'}}
+                  name: &#x27;numberField&#x27;,
+                  fieldType: &#x27;Number&#x27;,
+                  label: &#x27;Number Field Label&#x27;
+                {{'}'}}
+              ]
+            {{'}'}}
+          {{'}'}}    
+        </code>
+      </pre>
+  </tab>
+</tabset>

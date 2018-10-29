@@ -1,0 +1,47 @@
+<h2>CASNumber Field</h2>
+<p>A CAS Number field is a glorified text field that will display a warning message when the input isn't a valid <a href="https://en.wikipedia.org/wiki/CAS_Registry_Number">CAS Number</a>. The control will still be considered valid, even if the CAS No is invalid.</p>
+<p>Try entering a valid CAS No to see the warning dissapear. Some example values are: 7732-18-5, 50-36-2</p>
+<af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<div>
+  <tabset>
+    <tab heading="Template">
+      <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+    </tab>
+    <tab heading="Component">
+      <pre>
+        <code>
+          import {{'{'}} Component {{'}'}} from &#x27;@angular/core&#x27;;
+
+          @Component({{'{'}}
+            selector: &#x27;cas-number-example&#x27;,
+            templateUrl: &#x27;./cas-number-field-example.component.html&#x27;
+          })
+          export class MultiListExampleComponent {{'{'}}
+
+            myFormData = {{'{'}}
+            casNoField: &#x27;This is some text&#x27;
+            {{'}'}};
+
+            myFormDefinition = {{'{'}}
+              layout: [[&#x27;casNoField&#x27;]],
+              fields: [
+                {{'{'}}
+                  name: &#x27;casNoField&#x27;,
+                  fieldType: &#x27;CASNumber&#x27;,
+                  label: &#x27;CAS Number Field Label&#x27;
+                {{'}'}}
+              ]
+            {{'}'}}
+          {{'}'}}    
+        </code>
+      </pre>
+    </tab>
+  </tabset>
+</div>
+

@@ -1,0 +1,131 @@
+<h2>Relationship Field</h2>
+<p>Relationship fields are used when the list of values need to be loaded asynchronously based on user input, typically
+    because the list of values is too long to be loaded into a single list field.</p>
+<p>To use this field, some additional setup is required. You'll need to provide your own service to load selectable
+    options. The example below includes comments that help describe what each step is doing.</p>
+<p>Start typing some NHL team names or cities to see how the control behaves.</p>
+<af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<tabset>
+        <tab heading="Template">
+          <pre><code>
+&#x3C;af-form 
+    [formDefinition]=&#x22;myFormDefinition&#x22; 
+    [(formData)]=&#x22;myFormData&#x22; 
+&#x3C;/af-form&#x3E;
+              </code></pre>
+        </tab>
+        <tab heading="Component">
+          <pre>
+              <code>
+import {{'{'}} Component } from &#x27;@angular/core&#x27;;
+
+@Component({{'{'}}
+  selector: &#x27;app-relationship-field-example&#x27;,
+  templateUrl: &#x27;./relationship-field-example.component.html&#x27;,
+  styleUrls: [&#x27;./relationship-field-example.component.css&#x27;]
+{{'}'}})
+export class RelationshipFieldExampleComponent {{'{'}}
+  myFormData = {{'{'}}
+    relationshipField: null
+  {{'}'}};
+
+  myFormDefinition = {{'{'}}
+    layout: [[&#x27;relationshipField&#x27;]],
+    fields: [
+      {{'{'}}
+        name: &#x27;relationshipField&#x27;,
+        fieldType: &#x27;Relationship&#x27;,
+        label: &#x27;Relationship Label&#x27;,
+        displayNameField: &#x27;name&#x27;,		
+
+        //This object will be passed to the service whenever the field needs options.
+        //Look at the service to see how it is used.
+        relationshipServiceConfig: {{'{'}}
+          pageSize: 5,
+          filterField: &#x27;name&#x27;,
+          apiUrl: &#x27;https://statsapi.web.nhl.com/api/v1/teams&#x27;
+        {{'}'}}
+      {{'}'}}
+    ]
+  {{'}'}};
+
+  printFormData(): void {{'{'}}
+    alert(&#x27;Look at the console to view the form data that was printed to the console!&#x27;);
+    console.log(this.myFormData);
+  {{'}'}}
+{{'}'}}               
+              </code>
+            </pre>
+        </tab>
+        <tab heading="Service">
+                <pre>
+                    <code>
+import {{'{'}} Injectable {{'}'}} from &#x27;@angular/core&#x27;;
+import {{'{'}} HttpClient {{'}'}} from &#x27;@angular/common/http&#x27;;
+import {{'{'}} Observable {{'}'}} from &#x27;rxjs&#x27;;
+import {{'{'}} map {{'}'}} from &#x27;rxjs/operators&#x27;;
+
+@Injectable({{'{'}}
+  providedIn: &#x27;root&#x27;
+{{'}'}})
+export class RelationshipFieldExampleService {{'{'}}
+
+  constructor(private http: HttpClient) {{'{'}}
+  {{'}'}}
+
+  //This is the only function your service must have. Everything else is just used for example purposes.
+  //The first parameter is what the user typed into the field.
+  //The second parameter is the configuration for this field, specified in the formDefinition.
+  getOptions(filterValue: string, config: any): Observable&#x3C;any&#x3E; {{'{'}}
+    return this.http.get(config.apiUrl)
+      .pipe(map(resp =&#x3E; resp[&#x27;teams&#x27;]))
+      .pipe(map(teams =&#x3E; {{'{'}}
+        const opts = this.isEmptyFilter(filterValue) ? teams :
+          teams.filter(team =&#x3E; {{'{'}}
+            return team[config.filterField].toLowerCase().indexOf(filterValue.toLowerCase()) &#x3E; -1;
+          {{'}'}});
+
+        return {{'{'}}
+          options: opts.slice(0, config.pageSize),
+          resultsTruncated: opts.length &#x3E; config.pageSize
+        {{'}'}};
+      {{'}'}}));
+  {{'}'}}
+
+  isEmptyFilter(filterValue: string) {{'{'}}
+    return filterValue === null || filterValue === &#x27;&#x27; || filterValue === undefined;
+  {{'}'}}
+{{'}'}}
+                    </code>
+                  </pre>
+              </tab>
+              <tab heading="Module">
+                    <pre>
+                        <code>
+import {{'{'}} NgModule {{'}'}} from &#x27;@angular/core&#x27;;
+import {{'{'}} CommonModule {{'}'}} from &#x27;@angular/common&#x27;;
+import {{'{'}} BrowserModule {{'}'}} from &#x27;@angular/platform-browser&#x27;;
+import {{'{'}} HttpClientModule {{'}'}} from &#x27;@angular/common/http&#x27;;
+import {{'{'}} NgAutoFormModule {{'}'}} from &#x27;ng-auto-form-lib&#x27;;
+import {{'{'}} RelationshipFieldExampleComponent {{'}'}} from &#x27;./relationship-field-example/relationship-field-example.component&#x27;;
+import {{'{'}} RelationshipFieldExampleService {{'}'}} from &#x27;./relationship-field-example/relationship-field-example.service&#x27;;
+
+@NgModule({{'{'}}
+  imports: [
+    CommonModule,
+    BrowserModule,
+    HttpClientModule,
+
+    //Specify which service should be used for relationship fields
+    NgAutoFormModule.forRoot({{'{'}} relationshipService: RelationshipFieldExampleService {{'}'}})
+  ],
+  declarations: [  
+    RelationshipFieldExampleComponent
+  ]
+{{'}'}})
+export class AppModule {{'{'}} {{'}'}}
+                        </code>
+                      </pre>
+                  </tab>
+      </tabset>

@@ -1,0 +1,43 @@
+<h2>Logical Field</h2>
+<p>A logical field is used when you expect the user to only choose true or false.</p>
+<af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<tabset>
+  <tab heading="Template">
+    <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+    <pre>
+        <code>
+          import {{'{'}} Component {{'}'}} from &#x27;@angular/core&#x27;;
+
+          @Component({{'{'}}
+            selector: &#x27;logical-example&#x27;,
+            templateUrl: &#x27;./logical-field-example.component.html&#x27;
+          })
+          export class TextExampleComponent {{'{'}}
+
+            myFormData = {{'{'}}
+              logicalField: true
+            {{'}'}};
+
+            myFormDefinition = {{'{'}}
+              layout: [[&#x27;logicalField&#x27;]],
+              fields: [
+                {{'{'}}
+                  name: &#x27;logicalField&#x27;,
+                  fieldType: &#x27;Logical&#x27;,
+                  label: &#x27;Logical Field Label&#x27;
+                {{'}'}}
+              ]
+            {{'}'}}
+          {{'}'}}    
+        </code>
+      </pre>
+  </tab>
+</tabset>

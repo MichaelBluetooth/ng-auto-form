@@ -1,0 +1,10 @@
+<form *ngIf="form" [formGroup]="form" class="container-fluid">
+  <div *ngFor="let row of formDefinition.layout" class="form-group row">
+    <ng-container *ngFor="let fieldName of row">
+      <div *ngIf="isFieldVisible(fieldName)" [class]="'col-md-' + getColumnSize(row) + ' field'">
+        <af-field [field]="getField(fieldName)" [formControlName]="fieldName"></af-field>
+        <af-control-messages [control]="form.controls[fieldName]"></af-control-messages>
+      </div>
+    </ng-container>
+  </div>
+</form>

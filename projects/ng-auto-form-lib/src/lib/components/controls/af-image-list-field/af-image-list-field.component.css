@@ -1,0 +1,29 @@
+.selected-values {
+    padding-bottom: 10px;
+}
+
+.selected-value {
+    padding: 4px;
+}
+
+.clickable:hover {
+    cursor: pointer;
+    background-color: lightskyblue;
+}
+
+.options-pane {
+    z-index: 1;
+    position: absolute;
+    border: 1px solid lightblue;
+    width: 97%;
+    background-color: white;
+}
+
+.option-img {
+    padding: 10px 0 10px 10px;
+    max-width: 200px;
+}
+
+.option {
+    z-index: 2;
+}

@@ -1,0 +1,3 @@
+<div *ngIf="readOnly">{{dateValue | date:dateMask}}</div>
+<input [afFocus]="focus" *ngIf="!readOnly" [ngModel]="dateValue" (ngModelChange)="onValueChange($event)" class="form-control" type="text" bsDatepicker #dp="bsDatepicker"
+    [minDate]="minDate" [maxDate]="maxDate" [bsConfig]="bsConfig" [disabled]="disabled">

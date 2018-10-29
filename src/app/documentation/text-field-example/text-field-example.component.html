@@ -1,0 +1,134 @@
+<h2>Text Field</h2>
+<p>A text fields are useful when the form value is expected to be some...you guessed it! Text.</p>
+<af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<tabset>
+  <tab heading="Template">
+    <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+    <pre>
+        <code>
+          import {{'{'}} Component {{'}'}} from &#x27;@angular/core&#x27;;
+
+          @Component({{'{'}}
+            selector: &#x27;text-example&#x27;,
+            templateUrl: &#x27;./text-field-example.component.html&#x27;
+          })
+          export class TextExampleComponent {{'{'}}
+
+            myFormData = {{'{'}}
+            textField: &#x27;Some text here&#x27;
+            {{'}'}};
+
+            myFormDefinition = {{'{'}}
+              layout: [[&#x27;textField&#x27;]],
+              fields: [
+                {{'{'}}
+                  name: &#x27;textField&#x27;,
+                  fieldType: &#x27;Text&#x27;,
+                  label: &#x27;Text Field Label&#x27;
+                {{'}'}}
+              ]
+            {{'}'}}
+          {{'}'}}    
+        </code>
+      </pre>
+  </tab>
+</tabset>
+
+<h3>Validation</h3>
+<p>There are several validators that can be automatically applied to text fields. Try changing the values of each field
+  to see how the validation messages are change. Check out the documentation for form validation for more details.</p>
+<af-form [formDefinition]="myValidatedFormDefinition" [(formData)]="myValidatedFormData"></af-form>
+<button class="btn btn-primary" (click)="printValidatedFormData()">Print Form Data</button>
+<tabset>
+  <tab heading="Template">
+    <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myValidatedFormDefinition&#x22; 
+              [(formData)]=&#x22;myValidatedFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+    <pre>
+        <code>
+          import {{'{'}} Component, OnInit {{'}'}} from &#x27;@angular/core&#x27;;
+    
+          @Component({{'{'}}
+            selector: &#x27;validated-text-field-example&#x27;,
+            templateUrl: &#x27;./validated-text-field-example.component.html&#x27;,
+            styleUrls: [&#x27;./validated-text-field-example.component.css&#x27;]
+           {{'}'}})
+          export class ValidatedTextFieldExampleComponent {{'{'}}
+            
+            myValidatedFormData = {{'{'}}
+              requiredField: &#x27;&#x27;,
+              minLengthField: &#x27;too short&#x27;,
+              maxLengthField: &#x27;way too long&#x27;,
+              patternField: &#x27;value does not match pattern&#x27;,
+              emailField: &#x27;email at place dot com&#x27;,
+              mixedValidationsField: &#x27;&#x27;
+             {{'}'}};
+          
+            myValidatedFormDefinition = {{'{'}}
+              layout: [
+                [&#x27;requiredField&#x27;, &#x27;minLengthField&#x27;, &#x27;maxLengthField&#x27;],
+                [&#x27;patternField&#x27;, &#x27;emailField&#x27;],
+                [&#x27;mixedValidationsField&#x27;]
+              ],
+              fields: [
+                {{'{'}}
+                  name: &#x27;requiredField&#x27;,
+                  fieldType: &#x27;Text&#x27;,
+                  label: &#x27;Required Field&#x27;,
+                  validations: [{{'{'}} name: &#x27;Required&#x27; }]
+                 {{'}'}},
+                {{'{'}}
+                  name: &#x27;minLengthField&#x27;,
+                  fieldType: &#x27;Text&#x27;,
+                  label: &#x27;Min length Field&#x27;,
+                  validations: [{{'{'}} name: &#x27;MinLength&#x27;, value: 15 }]
+                {{'}'}},
+                {{'{'}}
+                  name: &#x27;maxLengthField&#x27;,
+                  fieldType: &#x27;Text&#x27;,
+                  label: &#x27;Max Length Field&#x27;,
+                  validations: [{{'{'}} name: &#x27;MaxLength&#x27;, value: 5 }]
+                },
+                {{'{'}}
+                  name: &#x27;patternField&#x27;,
+                  fieldType: &#x27;Text&#x27;,
+                  label: &#x27;Pattern Field&#x27;,
+                  validations: [{{'{'}} name: &#x27;Pattern&#x27;, value: &#x27;\\d{{'{'}}3}-\\d{{'{'}}3}&#x27; }]
+                {{'}'}},
+                {{'{'}}
+                  name: &#x27;emailField&#x27;,
+                  fieldType: &#x27;Text&#x27;,
+                  label: &#x27;Email Field&#x27;,
+                  validations: [{{'{'}} name: &#x27;Email&#x27; }]
+                {{'}'}},
+                {{'{'}}
+                  name: &#x27;mixedValidationsField&#x27;,
+                  fieldType: &#x27;Text&#x27;,
+                  label: &#x27;Mixed Validations Field&#x27;,
+                  validations: [{{'{'}} name: &#x27;Required&#x27; }, {{'{'}} name: &#x27;MaxLength&#x27;, value: 12 }, {{'{'}} name: &#x27;MinLength&#x27;, value: 3 }]
+                {{'}'}}
+              ]
+             {{'}'}};
+          
+            printValidatedFormData(): void {{'{'}}
+              alert(&#x27;Look at the console to view the form data that was printed to the console!&#x27;);
+              console.log(this.myValidatedFormData);
+            {{'}'}}
+          {{'}'}}      
+        </code>
+      </pre>
+  </tab>
+</tabset>

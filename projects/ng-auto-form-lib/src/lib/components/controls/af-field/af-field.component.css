@@ -1,0 +1,13 @@
+.label {
+    font-weight: bold;
+}
+
+.label-required::after {
+    content: "*";
+    color: red;
+}
+
+.has-tooltip {
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+}

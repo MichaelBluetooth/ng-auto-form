@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-auto-form-lib": [
+        "dist/ng-auto-form-lib"
+      ],
+      "ng-auto-form-lib/*": [
+        "dist/ng-auto-form-lib/*"
+      ]
+    }
   }
 }

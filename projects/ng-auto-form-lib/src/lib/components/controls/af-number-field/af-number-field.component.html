@@ -1,0 +1,2 @@
+<div *ngIf="readOnly">{{numberValue}}</div>
+<input *ngIf="!readOnly" type="number" class="form-control" [afFocus]="focus" [disabled]="disabled" [ngModel]="numberValue" (ngModelChange)="onValueChange($event)" />

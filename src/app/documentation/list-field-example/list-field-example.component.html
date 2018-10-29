@@ -1,0 +1,187 @@
+<h2>List Field</h2>
+<p>Lists are best used when the user must enter a value from a constrained set of possible values.</p>
+<af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<tabset>
+  <tab heading="Template">
+    <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+    <pre>
+        <code>
+          import {{'{'}} Component {{'}'}} from &#x27;@angular/core&#x27;;
+    
+          @Component({{'{'}}
+            selector: &#x27;list-example&#x27;,
+            templateUrl: &#x27;./list-field-example.component.html&#x27;
+          })
+          export class ListExampleComponent {{'{'}}
+          
+            myFormData = {{'{'}}
+              listField: [&#x27;Option 1&#x27;, &#x27;Option 2&#x27;],
+            {{'}'}};
+          
+            myFormDefinition = {{'{'}}
+              layout: [[&#x27;listField1&#x27;]],
+              fields: [
+                {{'{'}}
+                  name: &#x27;listField&#x27;,
+                  fieldType: &#x27;MultiList&#x27;,
+                  label: &#x27;List Field Label&#x27;,
+                  listOptions: [&#x27;Option 1&#x27;, &#x27;Option 2&#x27;, &#x27;Option 3&#x27;]
+                {{'}'}},
+              ]
+            {{'}'}}
+          {{'}'}}    
+        </code>
+      </pre>
+  </tab>
+</tabset>
+
+<h3>List Options As Objects</h3>
+<p>Sometimes the list options require the value be different than whats displayed. In these cases a list of object with
+  "name" and "id" fields can be supplied. The "name" will be used for display and the "id" will be used as the selected
+  value.</p>
+<af-form [formDefinition]="myFormDefinitionWithNameAndIds" [(formData)]="myFormDataWithNameAndIds"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<tabset>
+  <tab heading="Template">
+    <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinitionWithNameAndIds&#x22; 
+              [(formData)]=&#x22;myFormDataWithNameAndIds&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+    <pre>
+        <code>
+          import {{'{'}} Component, OnInit {{'}'}} from &#x27;@angular/core&#x27;;
+    
+          @Component({{'{'}}
+            selector: &#x27;app-list-field-example&#x27;,
+            templateUrl: &#x27;./list-field-example.component.html&#x27;,
+            styleUrls: [&#x27;./list-field-example.component.css&#x27;]
+          {{'}'}})
+          export class ListFieldExampleComponent {{'{'}}
+          
+            myFormDataWithNameAndIds = {{'{'}}
+              listField: 2
+            {{'}'}};
+          
+            myFormDefinitionWithNameAndIds = {{'{'}}
+              layout: [[&#x27;listField&#x27;]],
+              fields: [
+                {{'{'}}
+                  name: &#x27;listField&#x27;,
+                  fieldType: &#x27;List&#x27;,
+                  label: &#x27;List Label&#x27;,
+                  listOptions: [{{'{'}} id: 1, name: &#x27;Option 1&#x27; }, {{'{'}} id: 2, name: &#x27;Option 2&#x27; }]
+                {{'}'}}
+              ]
+            {{'}'}};
+          {{'}'}}      
+        </code>
+      </pre>
+  </tab>
+</tabset>
+
+<h3>List Options As Custom Objects</h3>
+<p>In the even your list options is not a collection of strings or a collection of name/ids, you can provide your own field names to be used as the value and display.</p>
+<af-form [formDefinition]="myFormDefinitionWithCustomFields" [(formData)]="myFormDataWithCustomFields"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<tabset>
+  <tab heading="Template">
+    <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinitionWithCustomFields&#x22; 
+              [(formData)]=&#x22;myFormDataWithCustomFields&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+    <pre>
+        <code>
+          import {{'{'}} Component, OnInit {{'}'}} from &#x27;@angular/core&#x27;;
+    
+          @Component({{'{'}}
+            selector: &#x27;app-list-field-example&#x27;,
+            templateUrl: &#x27;./list-field-example.component.html&#x27;,
+            styleUrls: [&#x27;./list-field-example.component.css&#x27;]
+          {{'}'}})
+          export class ListFieldExampleComponent {{'{'}}
+          
+            myFormDataWithCustomFields = {{'{'}}
+              listField: 2
+            {{'}'}};
+          
+            myFormDefinitionWithCustomFields = {{'{'}}
+              layout: [[&#x27;listField&#x27;]],
+              fields: [
+                {{'{'}}
+                  name: &#x27;listField&#x27;,
+                  fieldType: &#x27;List&#x27;,
+                  label: &#x27;List Label&#x27;,
+                  displayFieldName: &#x27;nodeId&#x27;,
+                  valueFieldName: &#x27;nodeName&#x27;,
+                  listOptions: [{{'{'}} nodeId: 1, nodeName: &#x27;Option 1&#x27; }, {{'{'}} nodeId: 2, nodeName: &#x27;Option 2&#x27; {{'}'}}]
+                {{'}'}}
+              ]
+            {{'}'}};
+          {{'}'}}      
+        </code>
+      </pre>
+  </tab>
+</tabset>
+
+<h3>Validation</h3>
+<p>Validators can be automatically applied to list fields.</p>
+<af-form [formDefinition]="myFormDefinitionWithRequiredFields" [(formData)]="myFormDataWithRequiredFields"></af-form>
+<button class="btn btn-primary" (click)="printFormDataWithRequiredFields()">Print Form Data</button>
+<tabset>
+  <tab heading="Template">
+    <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinitionWithCustomFields&#x22; 
+              [(formData)]=&#x22;myFormDataWithCustomFields&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+    <pre>
+        <code>
+          import {{'{'}} Component, OnInit {{'}'}} from &#x27;@angular/core&#x27;;
+    
+          @Component({{'{'}}
+            selector: &#x27;app-list-field-example&#x27;,
+            templateUrl: &#x27;./list-field-example.component.html&#x27;,
+            styleUrls: [&#x27;./list-field-example.component.css&#x27;]
+          {{'}'}})
+          export class ListFieldExampleComponent {{'{'}}
+          
+            myFormDataWithRequiredFields = {{'{'}}
+              listField: &#x27;&#x27;
+            {{'}'}};
+          
+            myFormDefinitionWithRequiredFields = {{'{'}}
+              layout: [[&#x27;listField&#x27;]],
+              fields: [
+                {{'{'}}
+                  name: &#x27;listField&#x27;,
+                  fieldType: &#x27;List&#x27;,
+                  label: &#x27;List Label&#x27;,
+                  listOptions: [&#x27;&#x27;, &#x27;Option 1&#x27;, &#x27;Option 2&#x27;],
+                  validations: [{{'{'}} name: &#x27;Required&#x27; {{'}'}}]
+                {{'}'}}
+              ]
+            {{'}'}};    
+          {{'}'}}      
+        </code>
+      </pre>
+  </tab>
+</tabset>

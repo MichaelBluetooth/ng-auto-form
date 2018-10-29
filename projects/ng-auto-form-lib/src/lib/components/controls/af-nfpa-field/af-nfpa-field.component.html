@@ -1,0 +1,60 @@
+<div class="nfpa-outer-container">
+  <div class="nfpa-container">
+    <div class="nfpa-code nfpa-health">
+      <div class="nfpa-opt">
+        <span class="nfpa-text" *ngIf="readOnly">{{nfpaValue.health}}</span>
+        <select class="nfpa-control" *ngIf="!readOnly" [ngModel]="nfpaValue.health" (ngModelChange)="onHealthChange($event)">
+          <option></option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+    </div>
+    <div class="nfpa-code nfpa-flamibility">
+      <div class="nfpa-opt">
+        <span *ngIf="readOnly" class="nfpa-text">{{nfpaValue.flamibility}}</span>
+        <select class="nfpa-control" *ngIf="!readOnly" [afFocus]="focus" [ngModel]="nfpaValue.flamibility" (ngModelChange)="onFlamibilityChange($event)">
+          <option></option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+    </div>
+    <div class="nfpa-code nfpa-special">
+      <div class="nfpa-opt">
+        <span class="nfpa-special-text" *ngIf="readOnly">{{nfpaValue.special}}</span>
+        <select class="nfpa-control" *ngIf="!readOnly" [ngModel]="nfpaValue.special" (ngModelChange)="onSpecialChange($event)">
+          <option></option>
+          <option value="OX">OX</option>
+          <option>W</option>
+          <option>SA</option>
+          <option>COR</option>
+          <option>ACID</option>
+          <option>ALK</option>
+          <option>BIO</option>
+          <option>POI</option>
+          <option>RA</option>
+          <option>RAD</option>
+          <option>CRY</option>
+          <option>CRYO</option>
+        </select>
+      </div>
+    </div>
+    <div class="nfpa-code nfpa-instability">
+      <div class="nfpa-opt">
+        <span class="nfpa-text" *ngIf="readOnly">{{nfpaValue.instability}}</span>
+        <select class="nfpa-control" *ngIf="!readOnly" [ngModel]="nfpaValue.instability" (ngModelChange)="onInstabilityChange($event)">
+          <option></option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

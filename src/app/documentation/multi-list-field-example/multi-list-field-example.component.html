@@ -1,0 +1,73 @@
+<h2>MultiList Field</h2>
+<p>MultiLists are used when the user is expected to select one or more values from a constrained set of possible
+  values.</p>
+<p>Like list fields, for simple multi list options, an array of strings can be provided.</p>
+<p>When the value of the option does not match what needs to be displayed, you can provide a list of objects. If the
+  list options are objects, by default the control will look for 'id' and 'name' fields. Alternatively you can specify
+  which fields are used for the value and display.</p>
+<af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<div>
+  <tabset>
+    <tab heading="Template" id="tab1">
+      <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;/af-form&#x3E;
+        </code></pre>
+    </tab>
+    <tab heading="Component">
+      <pre>
+        <code>
+            import {{'{'}} Component {{'}'}} from &#x27;@angular/core&#x27;;
+
+            @Component({{'{'}}
+              selector: &#x27;app-list-field-example&#x27;,
+              templateUrl: &#x27;./list-field-example.component.html&#x27;,
+              styleUrls: [&#x27;./list-field-example.component.css&#x27;]
+            })
+            export class ListFieldExampleComponent {{'{'}}
+            
+              myFormData = {{'{'}}
+                listField1: &#x27;Option 1&#x27;,
+                listField2: &#x27;Option 1&#x27;,
+                listField3: &#x27;Option 1&#x27;
+              {{'}'}};
+            
+              myFormDefinition = {{'{'}}
+                layout: [[&#x27;listField1&#x27;], [&#x27;listField2&#x27;], [&#x27;listField3&#x27;]],
+                fields: [
+                  {{'{'}}
+                    name: &#x27;listField1&#x27;,
+                    fieldType: &#x27;List&#x27;,
+                    label: &#x27;List With String Options&#x27;,
+                    listOptions: [&#x27;Option 1&#x27;, &#x27;Option 2&#x27;]
+                  {{'}'}},
+                  {{'{'}}
+                    name: &#x27;listField2&#x27;,
+                    fieldType: &#x27;List&#x27;,
+                    label: &#x27;List With Id/Name Options&#x27;,
+                    listOptions: [{{'{'}}id: 1, name: &#x27;Option 1&#x27;}, {{'{'}}id: 2, name: &#x27;Option 2&#x27;}]
+                  {{'}'}},
+                  {{'{'}}
+                    name: &#x27;listField3&#x27;,
+                    fieldType: &#x27;List&#x27;,
+                    label: &#x27;List With Custom Object Options&#x27;,
+                    displayFieldName: &#x27;nodeId&#x27;,
+                    valueFieldName: &#x27;nodeName&#x27;,
+                    listOptions: [{{'{'}}nodeId: 1, nodeName: &#x27;Option 1&#x27;}, {{'{'}}nodeId: 2, nodeName: &#x27;Option 2&#x27;}]
+                  {{'}'}},
+                ]
+              {{'}'}};
+            
+              printFormData(): void {{'{'}}
+                alert(&#x27;Look at the console to view the form data that was printed to the console!&#x27;);
+                console.log(this.myFormData);
+              {{'}'}}
+            {{'}'}}            
+        </code>
+      </pre>
+    </tab>
+  </tabset>
+</div>

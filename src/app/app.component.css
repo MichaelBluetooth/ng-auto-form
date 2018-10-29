@@ -1,0 +1,81 @@
+.header {
+    top: 0;
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    color: white;
+}
+
+.header a {
+    font-weight: bold;
+    color: white;
+    padding-left: 8px;
+    text-decoration: none;
+    /* font-size: 25px; */
+    /* display: block; */
+}
+
+.header a:hover {
+    color: lightskyblue;
+}
+
+.header i {
+    font-size: 32px;
+    padding-top: 8px;
+    padding-right: 28px;
+    display: block;
+}
+
+.header span {
+    padding-right: 32px;
+}
+
+.sidenav {
+    margin-top: 40px;
+    border-right: 1px solid lightgray;
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    /* font-size: 25px; */
+    display: block;
+}
+
+.sidenav-section-header {
+    font-weight: bold;
+    padding: 6px 8px 6px 16px;
+    display: block;
+}
+
+@media only screen and (min-width: 480px) {
+    .main {
+        margin-left: 160px;
+    }
+}
+
+.main {
+    margin-top: 60px;
+    padding-top: 150px;
+    /* Same as the width of the sidenav */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}

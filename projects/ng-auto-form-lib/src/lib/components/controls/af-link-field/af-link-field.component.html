@@ -1,0 +1,13 @@
+<a *ngIf="readOnly && linkValue.href" [href]="linkValue.href" class="form-control-no-border">{{linkValue.text}}</a>
+<div *ngIf="!readOnly" class="form-group row">
+  <label class="col-sm-1 col-form-label">Text:</label>
+  <div class="col-sm-5">
+    <input [afFocus]="focus" type="text" class="form-control form-control-sm" [disabled]="disabled" [(ngModel)]="linkValue.text"
+      (ngModelChange)="onValueChange()" />
+  </div>
+  <label class="col-sm-1 col-form-label">Href:</label>
+  <div class="col-sm-5">
+    <input type="text" class="form-control form-control-sm" [disabled]="disabled" [(ngModel)]="linkValue.href"
+      (ngModelChange)="onValueChange()" />
+  </div>
+</div>

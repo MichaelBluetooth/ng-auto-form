@@ -1,0 +1,2 @@
+<div *ngIf="readOnly">{{memoValue}}</div>
+<textarea *ngIf="!readOnly" class="form-control" [afFocus]="focus" [disabled]="disabled" [rows]="rows" [cols]="cols" [ngModel]="memoValue" (ngModelChange)="onValueChange($event)">{{memoValue}}</textarea>

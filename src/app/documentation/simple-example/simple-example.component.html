@@ -1,0 +1,92 @@
+<h2>NG Auto Form</h2>
+<p>NgAutoForm is a library of component tailored to generating forms based on a single object that defines everything
+  about your form - layout, labels, validation and fieldtypes. By using NgAutoForm you can spend less time building
+  infrastructure for your app and spend more time building the business needs!</p>
+<h2>Table of Contents</h2>
+<ol>
+  <li>Simple Example
+  </li>
+  <li>Fields
+    <ul>
+      <li>Text</li>
+      <li>Memo</li>
+      <li>List</li>
+      <li>Logical</li>
+      <li>Number</li>
+      <li>Multi List</li>
+      <li>Image List</li>
+      <li>CAS Number</li>
+      <li>NFPA</li>
+      <li>Relationship</li>
+    </ul>
+  </li>
+  <li>Validation
+  </li>
+</ol>
+
+<h2>Simple Example</h2>
+<p>This is a simple example of how to generate a form and how to work with the outputs. Open the browser console and
+  interact with the working sample to see how the outputs work.</p>
+<div>
+  <af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData" (formFieldDataChange)="onFormFieldChange($event)"></af-form>
+  <button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+  <tabset>
+    <tab heading="Template" id="tab1">
+      <pre><code>
+            &#x3C;af-form 
+              [formDefinition]=&#x22;myFormDefinition&#x22; 
+              [(formData)]=&#x22;myFormData&#x22; 
+              (formFieldDataChange)=&#x22;onFormFieldChange($event)&#x22;&#x3E;
+            &#x3C;/af-form&#x3E;
+            &#x3C;button class=&#x22;btn btn-primary&#x22; (click)=&#x22;printFormData()&#x22;&#x3E;Print Form Data&#x3C;/button&#x3E;
+        </code></pre>
+    </tab>
+    <tab heading="Component">
+      <pre><code>
+        @Component({{'{'}}
+          selector: &#x27;simple-example&#x27;,
+          templateUrl: &#x27;./simple-example.html&#x27;
+        })
+        export class AppComponent {{'{'}}
+          myFormData = {{'{'}}
+            textField: &#x27;This is some text&#x27;,
+            numberField: 42,
+            listField: &#x27;Orange&#x27;
+          {{'}'}};
+        
+          myFormDefinition = {{'{'}}
+            layout: [[&#x27;textField&#x27;], [&#x27;numberField&#x27;], [&#x27;listField&#x27;]],
+            fields: [
+              {{'{'}}
+                name: &#x27;textField&#x27;,
+                fieldType: &#x27;Text&#x27;,
+                label: &#x27;Text Field Label&#x27;
+              {{'}'}},
+              {{'{'}}
+                name: &#x27;numberField&#x27;,
+                fieldType: &#x27;Number&#x27;,
+                label: &#x27;Number Field Label&#x27;
+              {{'}'}},
+              {{'{'}}
+                name: &#x27;listField&#x27;,
+                fieldType: &#x27;List&#x27;,
+                label: &#x27;List Field Label&#x27;,
+                listOptions: [&#x27;Banana&#x27;, &#x27;Orange&#x27;, &#x27;Grape&#x27;, &#x27;Apple&#x27;]
+              {{'}'}}
+            ]
+          {{'}'}};
+        
+          onFormFieldChange(formChangeData) {{'{'}}
+            console.log(&#x27;onFormFieldChange() called!&#x27;);
+            console.log(formChangeData);
+          {{'}'}}
+        
+          printFormData(): void {{'{'}}
+            alert(&#x27;Look at the console to view the form data!&#x27;);
+            console.log(this.myFormData);
+          {{'}'}}
+        {{'}'}}          
+  </code></pre>
+    </tab>
+  </tabset>
+</div>

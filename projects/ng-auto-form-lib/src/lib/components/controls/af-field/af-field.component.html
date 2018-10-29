@@ -1,0 +1,28 @@
+<div *ngIf="field">
+    <label *ngIf="field.label" [class]="getLabelClass()" [tooltip]="field.tooltip">{{field.label}}</label>
+    <af-text-field *ngIf="isTextField()" [ngModel]="innerValue" (ngModelChange)="onValueChange($event)" [readOnly]="field.readOnly"
+        [focus]="field.focus"></af-text-field>
+    <af-number-field *ngIf="isNumberField()" [ngModel]="innerValue" (ngModelChange)="onValueChange($event)" [readOnly]="field.readOnly"
+        [focus]="field.focus"></af-number-field>
+    <af-list-field *ngIf="isListField()" [ngModel]="innerValue" [listOpts]="field['listOptions']" (ngModelChange)="onValueChange($event)"
+        [readOnly]="field.readOnly" [focus]="field.focus"></af-list-field>
+    <af-multi-list-field *ngIf="isMultiListField()" [ngModel]="innerValue" [listOpts]="field['listOptions']" (ngModelChange)="onValueChange($event)"
+        [size]="field['size']" [readOnly]="field.readOnly" [focus]="field.focus"></af-multi-list-field>
+    <af-date-field *ngIf="isDateField()" [ngModel]="innerValue" (ngModelChange)="onValueChange($event)" [readOnly]="field.readOnly"
+        [focus]="field.focus"></af-date-field>
+    <af-logical-field *ngIf="isLogicalField()" [ngModel]="innerValue" (ngModelChange)="onValueChange($event)" [readOnly]="field.readOnly"
+        [focus]="field.focus"></af-logical-field>
+    <af-file-field *ngIf="isFileField()" [ngModel]="innerValue" [acceptedfileTypes]="field['acceptedfileTypes']" (ngModelChange)="onValueChange($event)"></af-file-field>
+    <af-memo-field *ngIf="isMemoField()" [ngModel]="innerValue" (ngModelChange)="onValueChange($event)" [rows]="field['rows']" [cols]="field['cols']"
+        [readOnly]="field.readOnly" [focus]="field.focus"></af-memo-field>
+    <af-image-list-field *ngIf="isImageListField()" [ngModel]="innerValue" [imageOptions]="field['imageOptions']" [isMultiple]="field['isMultiple']"
+        (ngModelChange)="onValueChange($event)" [readOnly]="field.readOnly"></af-image-list-field>
+    <af-relationship-field *ngIf="isRelationshipField()" [ngModel]="innerValue" (ngModelChange)="onValueChange($event)" [readOnly]="field.readOnly"
+        [displayNameField]="field['displayNameField']" [relationshipServiceConfig]="field['relationshipServiceConfig']" [focus]="field.focus"></af-relationship-field>
+    <af-link-field *ngIf="isLinkField()" [ngModel]="innerValue" (ngModelChange)="onValueChange($event)" [readOnly]="field.readOnly"
+        [focus]="field.focus"></af-link-field>
+    <af-cas-field *ngIf="isCASNumberField()" [ngModel]="innerValue" (ngModelChange)="onValueChange($event)" [readOnly]="field.readOnly"
+        [focus]="field.focus" [focus]="field.focus"></af-cas-field>
+    <af-nfpa-field *ngIf="isNFPAField()" [ngModel]="innerValue" (ngModelChange)="onValueChange($event)" [readOnly]="field.readOnly"
+        [focus]="field.focus"></af-nfpa-field>
+</div>
