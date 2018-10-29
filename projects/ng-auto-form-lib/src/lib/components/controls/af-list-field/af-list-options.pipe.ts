@@ -8,7 +8,7 @@ export class AfListOptionsPipe implements PipeTransform {
         const tansformedListOptions: any[] = [];
         if (listOptions) {
             listOptions.forEach(listOpt => {
-                if (typeof (listOpt) === 'string' || typeof (listOpt) === 'number') {
+                if (null === listOpt || typeof (listOpt) === 'string' || typeof (listOpt) === 'number') {
                     tansformedListOptions.push({ display: listOpt, value: listOpt });
                 } else {
                     tansformedListOptions.push({ display: listOpt[displayFieldName], value: listOpt[valueFieldName] });

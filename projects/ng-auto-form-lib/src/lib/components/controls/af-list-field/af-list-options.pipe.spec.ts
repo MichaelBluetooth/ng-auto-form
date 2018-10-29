@@ -21,4 +21,8 @@ describe('AfListOptionsPipe', () => {
     it('should return an empty list when given null', () => {
         expect(pipe.transform(null)).toEqual([]);
     });
+
+    it('should tolerate null values', () => {
+        expect(pipe.transform([null])).toEqual([null]);
+    });
 });
