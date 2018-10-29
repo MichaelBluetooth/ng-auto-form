@@ -64,7 +64,7 @@ import { RelationshipOptionsService, RelationshipOptionsServiceDefault } from '.
   ]
 })
 export class NgAutoFormModule {
-  static forRoot(config: NgAutoFormConfig): ModuleWithProviders {
+  static forRoot(config?: NgAutoFormConfig): ModuleWithProviders {
     return {
       ngModule: NgAutoFormModule,
       providers: [
