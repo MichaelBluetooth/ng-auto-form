@@ -4,7 +4,7 @@ An Angular component library for generating forms based on metadata definitions.
 
 This library leans heavily on bootstrap (for styles), ngx-bootstrap (mostly for their date picker) and font-awesome (for icons).
 
-You can head over to [the official documentation page](https://github.com/MichaelBluetooth/ng-auto-form) to see more example usage.
+You can head over to [the official documentation page](https://ng-auto-form.herokuapp.com) to see more example usage.
 
 ## Getting Started
 
