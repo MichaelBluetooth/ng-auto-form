@@ -46,4 +46,9 @@ export class MultiListFieldExampleComponent {
       },
     ]
   };
+
+  printFormData() {
+    alert('Look at the console to view the form data that was printed to the console!');
+    console.log(this.myFormData);
+  }
 }
