@@ -11,7 +11,7 @@
     "e2e": "ng e2e",
     "build:lib": "ng build ng-auto-form-lib",
     "npm_pack": "cd dist/ng-auto-form-lib && npm pack",
-    "package": "npm run build:lib && npm run npm_pack",
+    "package": "npm run build:lib && npm run npm_pack"
   },
   "engines": {
     "node": "8.9.1",
