@@ -31,7 +31,8 @@ export class AfFormBuilderService {
     }
 
     isFieldIncludedInForm(field: AfField, layout: string[][], formData: any): boolean {
-        return this.isFieldVisible(field, formData) && this.isFieldIncludedInLayout(field.name, layout);
+        //return this.isFieldVisible(field, formData) && this.isFieldIncludedInLayout(field.name, layout);
+        return true;
     }
 
     isFieldIncludedInLayout(fieldName: string, layout: string[][]): boolean {

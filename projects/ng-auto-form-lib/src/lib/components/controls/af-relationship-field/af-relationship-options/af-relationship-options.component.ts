@@ -55,6 +55,7 @@ export class AfRelationshipOptionsComponent implements OnInit, OnChanges {
     this.relationshipOptionsService.getOptions(this.filterValue, this.relationshipServiceConfig).subscribe(results => {
       this.options = results.options;
       this.truncated = results.resultsTruncated;
+      this.waitingStop.emit();
       this.checkForSingleOption();
     });
   }
