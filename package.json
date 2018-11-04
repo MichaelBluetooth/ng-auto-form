@@ -10,6 +10,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:lib": "ng build ng-auto-form-lib",
+    "copy-license": "copy .\\LICENSE .\\dist\\ng-example-library",
+    "copy-readme": "copy .\\README.md .\\dist\\ng-example-library",
+    "copy-files": "npm run copy-license && npm run copy-readme",
     "npm_pack": "cd dist/ng-auto-form-lib && npm pack",
     "package": "npm run build:lib && npm run npm_pack"
   },
