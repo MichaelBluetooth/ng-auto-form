@@ -7,7 +7,7 @@
     "Forms",
     "Automatic"
   ],
-  "license" : "MIT",
+  "license" : "SEE LICENSE",
   "repository": {
     "type" : "git",
     "url" : "https://github.com/MichaelBluetooth/ng-auto-form"
