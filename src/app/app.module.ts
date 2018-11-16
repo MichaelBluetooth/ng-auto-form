@@ -16,6 +16,7 @@ import { MemoFieldExampleComponent } from './documentation/memo-field-example/me
 import { NumberFieldExampleComponent } from './documentation/number-field-example/number-field-example.component';
 import { LogicalFieldExampleComponent } from './documentation/logical-field-example/logical-field-example.component';
 import { RelationshipFieldExampleComponent } from './documentation/relationship-field-example/relationship-field-example.component';
+import { DateFieldExampleComponent } from './documentation/date-field-example/date-field-example.component';
 
 const appRoutes: Routes = [
   { path: 'getting-started', component: SimpleExampleComponent },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'fields/memo', component: MemoFieldExampleComponent },
   { path: 'fields/logical', component: LogicalFieldExampleComponent },
   { path: 'fields/relationship', component: RelationshipFieldExampleComponent },
+  { path: 'fields/date', component: DateFieldExampleComponent },
   { path: '', redirectTo: '/getting-started', pathMatch: 'full' }
 ];
 

@@ -16,6 +16,7 @@ import { MemoFieldExampleComponent } from './memo-field-example/memo-field-examp
 import { NumberFieldExampleComponent } from './number-field-example/number-field-example.component';
 import { LogicalFieldExampleComponent } from './logical-field-example/logical-field-example.component';
 import { RelationshipFieldExampleComponent } from './relationship-field-example/relationship-field-example.component';
+import { DateFieldExampleComponent } from './date-field-example/date-field-example.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { RelationshipFieldExampleComponent } from './relationship-field-example/
     MemoFieldExampleComponent,
     NumberFieldExampleComponent,
     LogicalFieldExampleComponent,
-    RelationshipFieldExampleComponent
+    RelationshipFieldExampleComponent,
+    DateFieldExampleComponent
   ],
   exports: [
     SimpleExampleComponent,

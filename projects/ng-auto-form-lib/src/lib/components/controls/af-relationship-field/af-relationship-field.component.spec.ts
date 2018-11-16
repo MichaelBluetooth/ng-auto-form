@@ -2,9 +2,7 @@ import { AfFocusModule } from './../../../directives/af-focus.module';
 import { Directive, Output, Input, EventEmitter } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AfRelationshipFieldComponent } from './af-relationship-field.component';
-import { AfRelationshipOptionsComponent } from './af-relationship-options/af-relationship-options.component';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
@@ -26,12 +24,10 @@ describe('AfRelationshipFieldComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                InfiniteScrollModule,
                 AfFocusModule
             ],
             declarations: [
                 AfRelationshipFieldComponent,
-                //AfRelationshipOptionsComponent,
                 MockRelationshipOptionsDirective
             ]
         })
@@ -110,7 +106,11 @@ describe('AfRelationshipFieldComponent', () => {
             inputBtn.nativeElement.click();
             fixture.detectChanges();
             fixture.whenStable().then(() => {
-                const dummyNewValue = { nodeName: 'This is the new node name', name: 'This is the new name', other: 'this is some other new field' };
+                const dummyNewValue = {
+                    nodeName: 'This is the new node name',
+                    name: 'This is the new name',
+                    other: 'this is some other new field'
+                };
                 const optionsPanelElement = fixture.debugElement.query(By.directive(MockRelationshipOptionsDirective));
                 const optionsPanel = optionsPanelElement.injector.get(MockRelationshipOptionsDirective) as MockRelationshipOptionsDirective;
                 optionsPanel.optionSelected.emit(dummyNewValue);

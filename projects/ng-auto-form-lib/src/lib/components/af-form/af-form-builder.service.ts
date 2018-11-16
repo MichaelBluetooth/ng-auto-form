@@ -51,18 +51,18 @@ export class AfFormBuilderService {
 
     isFieldVisible(field: AfField, formData: any): boolean {
         let isVisible = !field.visibility || field.visibility.length === 0;
-        if (field && field.visibility) {
-            field.visibility.forEach(vis => {
-                let formValue = formData;
-                vis.fieldName.split('.').forEach(subField => {
-                    formValue = formValue[subField] ? formValue[subField] : null;
-                });
-                // tslint:disable-next-line:triple-equals
-                if (vis.values.find(v => v == formValue)) { // INTENTIONALLY DOING A LOOSE COMPARISON SO WE CAN SUPPORT NUMERIC VS. STRING VALUES
-                    isVisible = true;
-                }
-            });
-        }
+        // if (field && field.visibility) {
+        //     field.visibility.forEach(vis => {
+        //         let formValue = formData;
+        //         vis.fieldName.split('.').forEach(subField => {
+        //             formValue = formValue[subField] ? formValue[subField] : null;
+        //         });
+        //         // tslint:disable-next-line:triple-equals
+        //         if (vis.values.find(v => v == formValue)) { // INTENTIONALLY DOING A LOOSE COMPARISON SO WE CAN SUPPORT NUMERIC VS. STRING VALUES
+        //             isVisible = true;
+        //         }
+        //     });
+        // }
         return isVisible;
     }
 }

@@ -1,7 +1,6 @@
 import { By, BrowserModule } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AfRelationshipOptionsComponent } from './af-relationship-options.component';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RelationshipOptionsService } from './relationship-options.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -57,8 +56,7 @@ describe('AfRelationshipOptionsComponent', () => {
             imports: [
                 CommonModule,
                 BrowserModule,
-                FormsModule,
-                InfiniteScrollModule
+                FormsModule
             ],
             declarations: [AfRelationshipOptionsComponent],
             providers: [{ provide: RelationshipOptionsService, useValue: mockOptionsService }]
