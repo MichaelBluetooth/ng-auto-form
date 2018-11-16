@@ -24,6 +24,44 @@
   </li>
 </ol>
 
+<h2>Installation</h2>
+<ol>
+  <li>Install the library    
+    <pre><code>npm install ng-auto-form</code></pre>
+  </li>
+  <li>Install peer dependencies
+      <pre><code>npm install bootstrap ngx-bootstrap font-awesome.</code></pre>  
+  </li>
+  <li>Update the "styles" section in angular.json for your project to include bootstrap and font-awesome.
+    <code><pre>
+"styles": [
+  "src/styles.css",
+  "node_modules/bootstrap/dist/css/bootstrap.css",
+  "node_modules/font-awesome/css/font-awesome.css"
+]
+    </pre></code>
+  </li>
+  <li>Import NgAutoForm in your app module.
+    <code><pre>
+import {{'{'}} NgAutoFormModule {{'}'}} from 'ng-auto-form';
+
+@NgModule({{'{'}}
+  declarations: [
+    AppComponent    
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    NgAutoFormModule.forRoot()
+  ],
+  bootstrap: [AppComponent]
+  {{'}'}})
+export class AppModule {{'{'}} {{'}'}}
+    </pre></code>
+  </li>
+</ol>
+
 <h2>Simple Example</h2>
 <p>This is a simple example of how to generate a form and how to work with the outputs. Open the browser console and
   interact with the working sample to see how the outputs work.</p>
