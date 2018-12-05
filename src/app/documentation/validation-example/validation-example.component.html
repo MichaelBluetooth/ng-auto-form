@@ -1,10 +1,11 @@
 <h2>Validation</h2>
-<p>This sectiond describes how you can optionally add validation to form controls. It also provides an example of how
+<p>This section describes how you can optionally add validation to form controls. It also provides an example of how
   you can get the state of the forms validity, which can be used to do things like enable/disable buttons and prevent
   form submission.</p>
 
 <h2>Example</h2>
-<p>There are quite a few different validations that are supported. Try entering valid values for all controls and observe how the button becomes enabled.</p>
+<p>There are quite a few different validations that are supported. Try entering valid values for all controls and
+  observe how the button becomes enabled.</p>
 <af-form [formDefinition]="myValidatedFormDefinition" [(formData)]="myValidatedFormData" (formValidityChange)="isFormValid=$event"></af-form>
 <button class="btn btn-primary" [disabled]="!isFormValid" (click)="printValidatedFormData()">Print Form Data</button>
 <tabset>
@@ -94,3 +95,61 @@ export class ValidatedTextFieldExampleComponent {{'{'}}
   </tab>
 </tabset>
 
+<h3>Supported Validations</h3>
+<p>Below is a table of fields and which validations it supports.</p>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Validation</th>
+      <th scope="col">Field</th>
+      <th scope="col">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Required</td>
+      <td>All fields</td>
+      <td><code>{{'{'}}name: 'Required'{{'}'}}</code></td>
+    </tr>
+    <tr>
+      <td>MinLength</td>
+      <td>Text, Memo</td>
+      <td><code>{{'{'}}name: 'Minlength', value: 10{{'}'}}</code></td>
+    </tr>
+    <tr>
+      <td>MinLength</td>
+      <td>Text, Memo</td>
+      <td><code>{{'{'}}name: 'Maxlength', value: 20{{'}'}}</code></td>
+    </tr>
+    <tr>
+      <td>Pattern</td>
+      <td>Text, Memo</td>
+      <td><code>{{'{'}}name: 'Pattern', value: '\d-\d'{{'}'}}</code></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>Text, Memo</td>
+      <td><code>{{'{'}}name: 'Email'{{'}'}}</code></td>
+    </tr>
+    <tr>
+      <td>Min</td>
+      <td>Number</td>
+      <td><code>{{'{'}}name: 'Min', value: 0{{'}'}}</code></td>
+    </tr>
+    <tr>
+      <td>Max</td>
+      <td>Number</td>
+      <td><code>{{'{'}}name: 'Min', value: 255{{'}'}}</code></td>
+    </tr>
+    <tr>
+        <td>GreaterThan</td>
+        <td>Number</td>
+        <td><code>{{'{'}}name: 'GreaterThan', value: 0{{'}'}}</code></td>
+      </tr>
+      <tr>
+        <td>LessThan</td>
+        <td>Number</td>
+        <td><code>{{'{'}}name: 'LessThan', value: 255{{'}'}}</code></td>
+      </tr>
+  </tbody>
+</table>
