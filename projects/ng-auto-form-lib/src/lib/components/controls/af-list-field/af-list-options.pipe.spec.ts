@@ -14,8 +14,8 @@ describe('AfListOptionsPipe', () => {
     });
 
     it('should transform arrays of objects into name/value pairs using the given displayNameField and valueField ', () => {
-        expect(pipe.transform([{id: 2222, name: 'firstItem'}, {id: 1111, name: 'secondItem'}], 'name', 'id'))
-        .toEqual([{ display: 'firstItem', value: 2222 }, { display: 'secondItem', value: 1111 }]);
+        expect(pipe.transform([{ id: 2222, name: 'firstItem' }, { id: 1111, name: 'secondItem' }], 'name', 'id'))
+            .toEqual([{ display: 'firstItem', value: 2222 }, { display: 'secondItem', value: 1111 }]);
     });
 
     it('should return an empty list when given null', () => {
@@ -23,6 +23,6 @@ describe('AfListOptionsPipe', () => {
     });
 
     it('should tolerate null values', () => {
-        expect(pipe.transform([null])).toEqual([null]);
+        expect(pipe.transform([null])).toEqual([{ display: null, value: null }]);
     });
 });

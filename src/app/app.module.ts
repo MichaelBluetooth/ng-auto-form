@@ -17,6 +17,7 @@ import { NumberFieldExampleComponent } from './documentation/number-field-exampl
 import { LogicalFieldExampleComponent } from './documentation/logical-field-example/logical-field-example.component';
 import { RelationshipFieldExampleComponent } from './documentation/relationship-field-example/relationship-field-example.component';
 import { DateFieldExampleComponent } from './documentation/date-field-example/date-field-example.component';
+import { ValidationExampleComponent } from './documentation/validation-example/validation-example.component';
 
 const appRoutes: Routes = [
   { path: 'getting-started', component: SimpleExampleComponent },
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'fields/logical', component: LogicalFieldExampleComponent },
   { path: 'fields/relationship', component: RelationshipFieldExampleComponent },
   { path: 'fields/date', component: DateFieldExampleComponent },
+  { path: 'validation', component: ValidationExampleComponent },
   { path: '', redirectTo: '/getting-started', pathMatch: 'full' }
 ];
 

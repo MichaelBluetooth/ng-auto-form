@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 describe('AfRelationshipOptionsComponent', () => {
     let component: AfRelationshipOptionsComponent;
     let fixture: ComponentFixture<AfRelationshipOptionsComponent>;
-    const mockOptionsService = jasmine.createSpyObj('relationshipOptionsService', ['init', 'getPage']);
+    const mockOptionsService = jasmine.createSpyObj('relationshipOptionsService', ['getOptions']);
 
     const pageSize = 7;
     const displayNameField = 'name';
@@ -65,8 +65,10 @@ describe('AfRelationshipOptionsComponent', () => {
     }));
 
     beforeEach(() => {
-        mockOptionsService.init.and.callFake(() => { });
-        mockOptionsService.getPage.and.returnValue(Observable.create(o => o.next(dummyListOpts.slice(0, pageSize))));
+        mockOptionsService.getOptions.and.returnValue(Observable.create(o => o.next({
+            options: dummyListOpts.slice(0, pageSize),
+            resultsTruncated: false
+        })));
 
         fixture = TestBed.createComponent(AfRelationshipOptionsComponent);
         component = fixture.componentInstance;
@@ -92,8 +94,10 @@ describe('AfRelationshipOptionsComponent', () => {
     });
 
     it('entering a search term that returns one option should automatically select that option', () => {
-        const singleOpt = dummyListOpts.slice(0, 1);
-        mockOptionsService.getPage.and.returnValue(Observable.create(o => o.next(dummyListOpts.slice(0, 1))));
+        mockOptionsService.getOptions.and.returnValue(Observable.create(o => o.next({
+            options: dummyListOpts.slice(0, 1),
+            resultsTruncated: false
+        })));
         spyOn(component.optionSelected, 'emit');
         fixture.whenStable().then(() => {
             component.filterValue = '';

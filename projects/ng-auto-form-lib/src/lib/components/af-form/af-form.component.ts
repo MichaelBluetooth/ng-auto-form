@@ -87,6 +87,6 @@ export class AfFormComponent implements OnInit, OnChanges {
   }
 
   isFieldVisible(fieldName: string) {
-    return this.fb.isFieldVisible(this.getField(fieldName), this.form.value);
+    return this.fb.isFieldIncludedInLayout(fieldName, this.formDefinition.layout);
   }
 }

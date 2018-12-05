@@ -143,7 +143,13 @@
           "options": {
             "main": "projects/ng-auto-form-lib/src/test.ts",
             "tsConfig": "projects/ng-auto-form-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-auto-form-lib/karma.conf.js"
+            "karmaConfig": "projects/ng-auto-form-lib/karma.conf.js",
+            "styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css"
+            ]
           }
         },
         "lint": {

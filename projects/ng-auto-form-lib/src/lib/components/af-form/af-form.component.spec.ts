@@ -34,47 +34,6 @@ describe('AfFormComponent', () => {
     expect(component.form).toBeDefined();
   });
 
-  describe('Invalid Fields', () => {
-    it('should not be considered when the field value is invalid but hidden', () => {
-      component.formData = {
-        validField: 'NotHidden',
-        hiddenField: ''
-      };
-      component.formDefinition = {
-        layout: [['validField', 'hiddenField']],
-        fields: [
-          {
-            name: 'validField',
-            label: 'Valid Field',
-            fieldType: AfFieldType.Text,
-            tooltip: '',
-            readOnly: false,
-            focus: false
-          },
-          {
-            name: 'hiddenField',
-            label: 'Hidden Field',
-            fieldType: AfFieldType.Text,
-            validations: [
-              {
-                name: AfFieldValidationName.Required
-              }],
-            visibility: [{
-              fieldName: 'validField',
-              values: ['Hidden']
-            }],
-            tooltip: '',
-            readOnly: false,
-            focus: false
-          }
-        ]
-      };
-
-      fixture.detectChanges();
-      expect(component['form'].valid).toBe(true);
-    });
-  });
-
   describe('changing a form value', () => {
     it('should emit changes to the form data', () => {
       spyOn(component.formDataChange, 'emit');
@@ -103,49 +62,6 @@ describe('AfFormComponent', () => {
       fixture.detectChanges();
       expect(component.formDataChange.emit).toHaveBeenCalledWith({ myField: 'New Value' });
       expect(component.formFieldDataChange.emit).toHaveBeenCalledWith({ fieldName: 'myField', value: 'New Value' });
-    });
-
-    it('should update and hide a field when a value matches the visibility settings', () => {
-      component.formData = {
-        validField: 'NotHidden',
-        hiddenField: ''
-      };
-      component.formDefinition = {
-        layout: [['validField', 'hiddenField']],
-        fields: [
-          {
-            name: 'validField',
-            label: 'Valid Field',
-            fieldType: AfFieldType.Text,
-            tooltip: '',
-            readOnly: false,
-            focus: false
-          },
-          {
-            name: 'hiddenField',
-            label: 'Hidden Field',
-            fieldType: AfFieldType.Text,
-            validations: [
-              {
-                name: AfFieldValidationName.Required
-              }],
-            visibility: [{
-              fieldName: 'validField',
-              values: ['NotHidden']
-            }],
-            tooltip: '',
-            readOnly: false,
-            focus: false
-          }
-        ]
-      };
-      fixture.detectChanges();
-      const inputs = fixture.debugElement.nativeElement.querySelectorAll('input');
-      expect(inputs.length).toBe(2);
-      inputs[0].value = 'Hidden';
-      inputs[0].dispatchEvent(new Event('input'));
-      fixture.detectChanges();
-      expect(fixture.debugElement.nativeElement.querySelectorAll('input').length).toBe(1);
     });
 
     it('should emit an event when the form validity state changes', () => {
