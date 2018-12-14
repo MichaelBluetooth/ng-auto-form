@@ -31,6 +31,12 @@ describe('AfMultiListFieldComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should set the displayNameField and valueNameField to default values when none are provided', () => {
+    component.ngOnInit();
+    expect(component.displayFieldName).toBe('name');
+    expect(component.valueFieldName).toBe('id');
+  });
+
   it('should set the value when the list options are string', () => {
     component.listOpts = ['one', 'two', 'three'];
     component.writeValue(['two']);
@@ -98,6 +104,34 @@ describe('AfMultiListFieldComponent', () => {
   it('should render the selected values', () => {
     component.listOpts = ['one', 'two', 'three'];
     component.writeValue(['two', 'three']);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const elements = fixture.debugElement.queryAll(By.css('option'));
+      expect(elements.length).toBe(3);
+      expect(elements[0].nativeElement.selected).toBe(false);
+      expect(elements[1].nativeElement.selected).toBe(true);
+      expect(elements[2].nativeElement.selected).toBe(true);
+    });
+  });
+
+  it('should render the selected values when the values are objects with a name and id', () => {
+    component.listOpts = [{ id: 1, name: 'one' }, { id: 2, name: 'two' }, { id: 3, name: 'three' }];
+    component.writeValue([2, 3]);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const elements = fixture.debugElement.queryAll(By.css('option'));
+      expect(elements.length).toBe(3);
+      expect(elements[0].nativeElement.selected).toBe(false);
+      expect(elements[1].nativeElement.selected).toBe(true);
+      expect(elements[2].nativeElement.selected).toBe(true);
+    });
+  });
+
+  it('should render the selected values when the values are custom objects', () => {
+    component.displayFieldName = 'display';
+    component.valueFieldName = 'value';
+    component.listOpts = [{ value: 1, display: 'uno' }, { value: 2, display: 'dos' }, { value: 3, display: 'tres' }];
+    component.writeValue([2, 3]);
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       const elements = fixture.debugElement.queryAll(By.css('option'));

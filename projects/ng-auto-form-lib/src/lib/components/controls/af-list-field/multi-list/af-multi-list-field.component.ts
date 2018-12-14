@@ -15,7 +15,7 @@ import { AfListOptionsPipe } from './../af-list-options.pipe';
     AfListOptionsPipe
   ]
 })
-export class AfMultiListFieldComponent implements ControlValueAccessor {
+export class AfMultiListFieldComponent implements ControlValueAccessor, OnInit {
 
   @Input() listOpts: any[] = [];
   @Input() displayFieldName = 'name';
@@ -32,6 +32,16 @@ export class AfMultiListFieldComponent implements ControlValueAccessor {
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };
+
+  ngOnInit() {
+    if (!this.displayFieldName) {
+      this.displayFieldName = 'name';
+    }
+
+    if (!this.valueFieldName) {
+      this.valueFieldName = 'id';
+    }
+  }
 
   writeValue(value: any[]) {
     this.selectedValue = value;

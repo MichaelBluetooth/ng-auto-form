@@ -9,9 +9,9 @@ export class MultiListFieldExampleComponent {
 
   myFormData = {
     listField1: ['Option 1', 'Option 2'],
-    listField2: ['Option 1', 'Option 2'],
-    listField3: ['Option 1', 'Option 2']
-  };
+    listField2: [2, 3],
+    listField3: [1, 3]
+  };  
 
   myFormDefinition = {
     layout: [['listField1'], ['listField2'], ['listField3']],
@@ -36,8 +36,8 @@ export class MultiListFieldExampleComponent {
         name: 'listField3',
         fieldType: 'MultiList',
         label: 'Multi List With Custom Object Options',
-        displayFieldName: 'nodeId',
-        valueFieldName: 'nodeName',
+        displayFieldName: 'nodeName',
+        valueFieldName: 'nodeId',
         listOptions: [
           { nodeId: 1, nodeName: 'Option 1' },
           { nodeId: 2, nodeName: 'Option 2' },
