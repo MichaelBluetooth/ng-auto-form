@@ -18,6 +18,24 @@ import { LogicalFieldExampleComponent } from './logical-field-example/logical-fi
 import { RelationshipFieldExampleComponent } from './relationship-field-example/relationship-field-example.component';
 import { DateFieldExampleComponent } from './date-field-example/date-field-example.component';
 import { ValidationExampleComponent } from './validation-example/validation-example.component';
+import { Routes, RouterModule } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'getting-started', component: SimpleExampleComponent },
+  { path: 'fields/text', component: TextFieldExampleComponent },
+  { path: 'fields/list', component: ListFieldExampleComponent },
+  { path: 'fields/number', component: NumberFieldExampleComponent },
+  { path: 'fields/multilist', component: MultiListFieldExampleComponent },
+  { path: 'fields/imagelist', component: ImageListFieldExampleComponent },
+  { path: 'fields/casno', component: CasnoFieldExampleComponent },
+  { path: 'fields/nfpa', component: NfaFieldExampleComponent },
+  { path: 'fields/memo', component: MemoFieldExampleComponent },
+  { path: 'fields/logical', component: LogicalFieldExampleComponent },
+  { path: 'fields/relationship', component: RelationshipFieldExampleComponent },
+  { path: 'fields/date', component: DateFieldExampleComponent },
+  { path: 'validation', component: ValidationExampleComponent },
+  { path: '', redirectTo: '/getting-started', pathMatch: 'full' }
+];
 
 @NgModule({
   imports: [
@@ -25,7 +43,8 @@ import { ValidationExampleComponent } from './validation-example/validation-exam
     BrowserModule,
     HttpClientModule,
     TabsModule.forRoot(),
-    NgAutoFormModule.forRoot({ relationshipService: RelationshipFieldExampleService })
+    NgAutoFormModule.forRoot({ relationshipService: RelationshipFieldExampleService }),
+    RouterModule.forRoot(appRoutes),
   ],
   declarations: [
     SimpleExampleComponent,
@@ -43,11 +62,7 @@ import { ValidationExampleComponent } from './validation-example/validation-exam
     ValidationExampleComponent
   ],
   exports: [
-    SimpleExampleComponent,
-    ListFieldExampleComponent,
-    MultiListFieldExampleComponent,
-    CasnoFieldExampleComponent,
-    ImageListFieldExampleComponent
+    RouterModule
   ]
 })
 export class DocumentationModule { }
