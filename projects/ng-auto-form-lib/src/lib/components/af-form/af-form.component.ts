@@ -40,6 +40,7 @@ export class AfFormComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.buildForm();
     this.valid = this.form.valid;
+    this.formValidityChange.emit(this.valid);
   }
 
   /*

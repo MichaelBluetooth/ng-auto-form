@@ -1,5 +1,4 @@
-import { AfFormBuilderService } from './af-form-builder.service';
-import { AfFieldType, AfField, AfFieldValidationName } from './../../models/af-field.model';
+import { AfFieldType, AfFieldValidationName } from './../../models/af-field.model';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -7,8 +6,6 @@ import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angu
 
 import { NgAutoFormModule } from './../../ng-auto-form.module';
 import { AfFormComponent } from './af-form.component';
-import { Component } from '@angular/core';
-import { AfValidationService } from '../../validators/af-validation.service';
 
 describe('AfFormComponent', () => {
   let component: AfFormComponent;
@@ -32,6 +29,56 @@ describe('AfFormComponent', () => {
 
   it('should initialize with a form', () => {
     expect(component.form).toBeDefined();
+  });
+
+  describe('form validity', () => {
+    it('should emit true when the form is initially valid', () => {
+      spyOn(component.formValidityChange, 'emit');
+
+      component.formData = {
+        myField: 'valid value',
+      };
+      component.formDefinition = {
+        layout: [['myField']],
+        fields: [
+          {
+            name: 'myField',
+            label: 'Test Field',
+            fieldType: AfFieldType.Text,
+            tooltip: '',
+            readOnly: false,
+            focus: false,
+            validations: [{ name: AfFieldValidationName.Required }]
+          }
+        ]
+      };
+      fixture.detectChanges();
+      expect(component.formValidityChange.emit).toHaveBeenCalledWith(true);
+    });
+
+    it('should emit false when the form is initially valid', () => {
+      spyOn(component.formValidityChange, 'emit');
+
+      component.formData = {
+        myField: '',
+      };
+      component.formDefinition = {
+        layout: [['myField']],
+        fields: [
+          {
+            name: 'myField',
+            label: 'Test Field',
+            fieldType: AfFieldType.Text,
+            tooltip: '',
+            readOnly: false,
+            focus: false,
+            validations: [{ name: AfFieldValidationName.Required }]
+          }
+        ]
+      };
+      fixture.detectChanges();
+      expect(component.formValidityChange.emit).toHaveBeenCalledWith(false);
+    });
   });
 
   describe('changing a form value', () => {
