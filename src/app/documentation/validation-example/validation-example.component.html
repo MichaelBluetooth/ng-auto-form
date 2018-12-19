@@ -14,6 +14,7 @@
 &#x3C;af-form 
   [formDefinition]=&#x22;myValidatedFormDefinition&#x22; 
   [(formData)]=&#x22;myValidatedFormData&#x22; 
+  (formValidityChange)=&#x22;isFormValid=$event&#x22;
 &#x3C;/af-form&#x3E;
 &#x3C;button [disabled]=&#x22;!isFormValid&#x22;&#x3E;Print Form Data&#x3C;/button&#x3E;
             </code></pre>
@@ -30,6 +31,8 @@ import {{'{'}} Component, OnInit {{'}'}} from &#x27;@angular/core&#x27;;
  {{'}'}})
 export class ValidatedTextFieldExampleComponent {{'{'}}
   
+  isFormValid = false;
+
   myValidatedFormData = {{'{'}}
     requiredField: &#x27;&#x27;,
     minLengthField: &#x27;too short&#x27;,

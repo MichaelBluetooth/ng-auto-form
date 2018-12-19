@@ -57,78 +57,77 @@
         </code></pre>
   </tab>
   <tab heading="Component">
-    <pre>
-        <code>
-          import {{'{'}} Component, OnInit {{'}'}} from &#x27;@angular/core&#x27;;
-    
-          @Component({{'{'}}
-            selector: &#x27;validated-text-field-example&#x27;,
-            templateUrl: &#x27;./validated-text-field-example.component.html&#x27;,
-            styleUrls: [&#x27;./validated-text-field-example.component.css&#x27;]
-           {{'}'}})
-          export class ValidatedTextFieldExampleComponent {{'{'}}
-            
-            myValidatedFormData = {{'{'}}
-              requiredField: &#x27;&#x27;,
-              minLengthField: &#x27;too short&#x27;,
-              maxLengthField: &#x27;way too long&#x27;,
-              patternField: &#x27;value does not match pattern&#x27;,
-              emailField: &#x27;email at place dot com&#x27;,
-              mixedValidationsField: &#x27;&#x27;
-             {{'}'}};
-          
-            myValidatedFormDefinition = {{'{'}}
-              layout: [
-                [&#x27;requiredField&#x27;, &#x27;minLengthField&#x27;, &#x27;maxLengthField&#x27;],
-                [&#x27;patternField&#x27;, &#x27;emailField&#x27;],
-                [&#x27;mixedValidationsField&#x27;]
-              ],
-              fields: [
-                {{'{'}}
-                  name: &#x27;requiredField&#x27;,
-                  fieldType: &#x27;Text&#x27;,
-                  label: &#x27;Required Field&#x27;,
-                  validations: [{{'{'}} name: &#x27;Required&#x27; }]
-                 {{'}'}},
-                {{'{'}}
-                  name: &#x27;minLengthField&#x27;,
-                  fieldType: &#x27;Text&#x27;,
-                  label: &#x27;Min length Field&#x27;,
-                  validations: [{{'{'}} name: &#x27;MinLength&#x27;, value: 15 }]
-                {{'}'}},
-                {{'{'}}
-                  name: &#x27;maxLengthField&#x27;,
-                  fieldType: &#x27;Text&#x27;,
-                  label: &#x27;Max Length Field&#x27;,
-                  validations: [{{'{'}} name: &#x27;MaxLength&#x27;, value: 5 }]
-                },
-                {{'{'}}
-                  name: &#x27;patternField&#x27;,
-                  fieldType: &#x27;Text&#x27;,
-                  label: &#x27;Pattern Field&#x27;,
-                  validations: [{{'{'}} name: &#x27;Pattern&#x27;, value: &#x27;\\d{{'{'}}3}-\\d{{'{'}}3}&#x27; }]
-                {{'}'}},
-                {{'{'}}
-                  name: &#x27;emailField&#x27;,
-                  fieldType: &#x27;Text&#x27;,
-                  label: &#x27;Email Field&#x27;,
-                  validations: [{{'{'}} name: &#x27;Email&#x27; }]
-                {{'}'}},
-                {{'{'}}
-                  name: &#x27;mixedValidationsField&#x27;,
-                  fieldType: &#x27;Text&#x27;,
-                  label: &#x27;Mixed Validations Field&#x27;,
-                  validations: [{{'{'}} name: &#x27;Required&#x27; }, {{'{'}} name: &#x27;MaxLength&#x27;, value: 12 }, {{'{'}} name: &#x27;MinLength&#x27;, value: 3 }]
-                {{'}'}}
-              ]
-             {{'}'}};
-          
-            printValidatedFormData(): void {{'{'}}
-              alert(&#x27;Look at the console to view the form data that was printed to the console!&#x27;);
-              console.log(this.myValidatedFormData);
-            {{'}'}}
-          {{'}'}}      
-        </code>
-      </pre>
+    <code><pre>
+import {{'{'}} Component, OnInit {{'}'}} from &#x27;@angular/core&#x27;;
+
+@Component({{'{'}}
+  selector: &#x27;validated-text-field-example&#x27;,
+  templateUrl: &#x27;./validated-text-field-example.component.html&#x27;,
+  styleUrls: [&#x27;./validated-text-field-example.component.css&#x27;]
+ {{'}'}})
+export class ValidatedTextFieldExampleComponent {{'{'}}
+  
+  myValidatedFormData = {{'{'}}
+    requiredField: &#x27;&#x27;,
+    minLengthField: &#x27;too short&#x27;,
+    maxLengthField: &#x27;way too long&#x27;,
+    patternField: &#x27;value does not match pattern&#x27;,
+    emailField: &#x27;email at place dot com&#x27;,
+    mixedValidationsField: &#x27;&#x27;
+   {{'}'}};
+
+  myValidatedFormDefinition = {{'{'}}
+    layout: [
+      [&#x27;requiredField&#x27;, &#x27;minLengthField&#x27;, &#x27;maxLengthField&#x27;],
+      [&#x27;patternField&#x27;, &#x27;emailField&#x27;],
+      [&#x27;mixedValidationsField&#x27;]
+    ],
+    fields: [
+      {{'{'}}
+        name: &#x27;requiredField&#x27;,
+        fieldType: &#x27;Text&#x27;,
+        label: &#x27;Required Field&#x27;,
+        validations: [{{'{'}} name: &#x27;Required&#x27; }]
+       {{'}'}},
+      {{'{'}}
+        name: &#x27;minLengthField&#x27;,
+        fieldType: &#x27;Text&#x27;,
+        label: &#x27;Min length Field&#x27;,
+        validations: [{{'{'}} name: &#x27;MinLength&#x27;, value: 15 }]
+      {{'}'}},
+      {{'{'}}
+        name: &#x27;maxLengthField&#x27;,
+        fieldType: &#x27;Text&#x27;,
+        label: &#x27;Max Length Field&#x27;,
+        validations: [{{'{'}} name: &#x27;MaxLength&#x27;, value: 5 }]
+      },
+      {{'{'}}
+        name: &#x27;patternField&#x27;,
+        fieldType: &#x27;Text&#x27;,
+        label: &#x27;Pattern Field&#x27;,
+        validations: [{{'{'}} name: &#x27;Pattern&#x27;, value: &#x27;\\d{{'{'}}3}-\\d{{'{'}}3}&#x27; }]
+      {{'}'}},
+      {{'{'}}
+        name: &#x27;emailField&#x27;,
+        fieldType: &#x27;Text&#x27;,
+        label: &#x27;Email Field&#x27;,
+        validations: [{{'{'}} name: &#x27;Email&#x27; }]
+      {{'}'}},
+      {{'{'}}
+        name: &#x27;mixedValidationsField&#x27;,
+        fieldType: &#x27;Text&#x27;,
+        label: &#x27;Mixed Validations Field&#x27;,
+        validations: [{{'{'}} name: &#x27;Required&#x27; }, {{'{'}} name: &#x27;MaxLength&#x27;, value: 12 }, {{'{'}} name: &#x27;MinLength&#x27;, value: 3 }]
+      {{'}'}}
+    ]
+   {{'}'}};
+
+  printValidatedFormData(): void {{'{'}}
+    alert(&#x27;Look at the console to view the form data that was printed to the console!&#x27;);
+    console.log(this.myValidatedFormData);
+  {{'}'}}
+{{'}'}}
+</pre>      
+</code>
   </tab>
 </tabset>
