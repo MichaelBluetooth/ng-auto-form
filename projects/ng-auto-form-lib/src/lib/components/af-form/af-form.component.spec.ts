@@ -7,7 +7,7 @@ import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angu
 import { NgAutoFormModule } from './../../ng-auto-form.module';
 import { AfFormComponent } from './af-form.component';
 
-describe('AfFormComponent', () => {
+fdescribe('AfFormComponent', () => {
   let component: AfFormComponent;
   let fixture: ComponentFixture<AfFormComponent>;
 
@@ -82,12 +82,13 @@ describe('AfFormComponent', () => {
   });
 
   describe('changing a form value', () => {
-    it('should emit changes to the form data', () => {
+    it('should emit changes to the form data and preserve and data not included in the layout', () => {
       spyOn(component.formDataChange, 'emit');
       spyOn(component.formFieldDataChange, 'emit');
 
       component.formData = {
         myField: '',
+        myFieldThatIsNotInTheLayout: 'test_value',
       };
       component.formDefinition = {
         layout: [['myField']],
@@ -95,6 +96,14 @@ describe('AfFormComponent', () => {
           {
             name: 'myField',
             label: 'Test Field',
+            fieldType: AfFieldType.Text,
+            tooltip: '',
+            readOnly: false,
+            focus: false
+          },
+          {
+            name: 'myFieldThatIsNotInTheLayout',
+            label: 'Other Test Field',
             fieldType: AfFieldType.Text,
             tooltip: '',
             readOnly: false,
@@ -107,7 +116,7 @@ describe('AfFormComponent', () => {
       textInput.value = 'New Value';
       textInput.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-      expect(component.formDataChange.emit).toHaveBeenCalledWith({ myField: 'New Value' });
+      expect(component.formDataChange.emit).toHaveBeenCalledWith({ myField: 'New Value', myFieldThatIsNotInTheLayout: 'test_value' });
       expect(component.formFieldDataChange.emit).toHaveBeenCalledWith({ fieldName: 'myField', value: 'New Value' });
     });
 
