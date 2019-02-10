@@ -7,7 +7,7 @@ import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angu
 import { NgAutoFormModule } from './../../ng-auto-form.module';
 import { AfFormComponent } from './af-form.component';
 
-fdescribe('AfFormComponent', () => {
+describe('AfFormComponent', () => {
   let component: AfFormComponent;
   let fixture: ComponentFixture<AfFormComponent>;
 
