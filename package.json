@@ -1,6 +1,6 @@
 {
   "name": "ng-auto-form",
-  "version": "0.0.3-beta",
+  "version": "0.0.4-beta",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
@@ -62,6 +62,6 @@
     "tsickle": ">=0.29.0",
     "tslib": "^1.9.0",
     "tslint": "~5.11.0",
-    "typescript": "~2.9.2"
+    "typescript": "^3.1.1"
   }
 }
