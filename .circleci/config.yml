@@ -14,3 +14,5 @@ jobs:
           paths:
             - "node_modules"
       - run: npm run test ng-auto-form-lib -- --no-watch --no-progress --browsers=ChromeHeadless
+      - store_test_results:
+          path: test-results
