@@ -7,6 +7,7 @@
     "postinstall": "npm run build:lib && ng build --aot --prod",
     "build": "ng build",
     "test": "ng test",
+    "test:lib": "ng test --",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:lib": "ng build ng-auto-form-lib",
