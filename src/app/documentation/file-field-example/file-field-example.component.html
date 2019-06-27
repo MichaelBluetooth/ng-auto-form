@@ -1,0 +1,46 @@
+<h2>File Field</h2>
+<p>Files fields allow users to upload a file. A <a
+    href="https://developer.mozilla.org/en-US/docs/Web/API/FileList">FileList</a> object is stored as the value in the
+  form. Try uploading a .jpg, .gif or .png file to see how the form reacts.</p>
+<af-form [formDefinition]="myFormDefinition" [(formData)]="myFormData"></af-form>
+<button class="btn btn-primary" (click)="printFormData()">Print Form Data</button>
+<tabset>
+  <tab heading="Template">
+    <pre><code>
+  &#x3C;af-form
+    [formDefinition]=&#x22;myFormDefinition&#x22;
+    [(formData)]=&#x22;myFormData&#x22;
+  &#x3C;/af-form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+      <pre>
+          <code>
+  import {{'{'}} Component {{'}'}} from &#x27;@angular/core&#x27;;
+
+  @Component({{'{'}}
+    selector: &#x27;file-example&#x27;,
+    templateUrl: &#x27;./file-field-example.component.html&#x27;
+  })
+  export class FileExampleComponent {{'{'}}
+
+    myFormData = {{'{'}}
+      fileField: null
+    {{'}'}};
+
+    myFormDefinition = {{'{'}}
+      layout: [[&#x27;fileField&#x27;]],
+      fields: [
+        {{'{'}}
+          name: &#x27;fileField&#x27;,
+          fieldType: &#x27;File&#x27;,
+          label: &#x27;File Field Label&#x27;,
+          acceptedfileTyoes: &#x27;.gif, .jpg, .png&#x27;
+        {{'}'}}
+      ]
+    {{'}'}}
+  {{'}'}}
+          </code>
+        </pre>
+    </tab>
+</tabset>

@@ -19,6 +19,7 @@
       <li><a [routerLink]="['/fields/nfpa']">NFPA</a> </li>
       <li><a [routerLink]="['/fields/relationship']">Relationship</a> </li>
       <li><a [routerLink]="['/fields/date']">Date</a> </li>
+      <li><a [routerLink]="['/fields/file']">File</a> </li>
     </ul>
   </li>
   <li><a [routerLink]="['/validation']">Validation</a></li>
@@ -47,7 +48,7 @@ import {{'{'}} NgAutoFormModule {{'}'}} from 'ng-auto-form';
 
 @NgModule({{'{'}}
   declarations: [
-    AppComponent    
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -71,9 +72,9 @@ export class AppModule {{'{'}} {{'}'}}
   <tabset>
     <tab heading="Template" id="tab1">
       <pre><code>
-            &#x3C;af-form 
-              [formDefinition]=&#x22;myFormDefinition&#x22; 
-              [(formData)]=&#x22;myFormData&#x22; 
+            &#x3C;af-form
+              [formDefinition]=&#x22;myFormDefinition&#x22;
+              [(formData)]=&#x22;myFormData&#x22;
               (formFieldDataChange)=&#x22;onFormFieldChange($event)&#x22;&#x3E;
             &#x3C;/af-form&#x3E;
             &#x3C;button class=&#x22;btn btn-primary&#x22; (click)=&#x22;printFormData()&#x22;&#x3E;Print Form Data&#x3C;/button&#x3E;
@@ -91,7 +92,7 @@ export class AppModule {{'{'}} {{'}'}}
             numberField: 42,
             listField: &#x27;Orange&#x27;
           {{'}'}};
-        
+
           myFormDefinition = {{'{'}}
             layout: [[&#x27;textField&#x27;], [&#x27;numberField&#x27;], [&#x27;listField&#x27;]],
             fields: [
@@ -113,17 +114,17 @@ export class AppModule {{'{'}} {{'}'}}
               {{'}'}}
             ]
           {{'}'}};
-        
+
           onFormFieldChange(formChangeData) {{'{'}}
             console.log(&#x27;onFormFieldChange() called!&#x27;);
             console.log(formChangeData);
           {{'}'}}
-        
+
           printFormData(): void {{'{'}}
             alert(&#x27;Look at the console to view the form data!&#x27;);
             console.log(this.myFormData);
           {{'}'}}
-        {{'}'}}          
+        {{'}'}}
   </code></pre>
     </tab>
   </tabset>
