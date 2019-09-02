@@ -19,6 +19,8 @@ import { RelationshipFieldExampleComponent } from './relationship-field-example/
 import { DateFieldExampleComponent } from './date-field-example/date-field-example.component';
 import { ValidationExampleComponent } from './validation-example/validation-example.component';
 import { Routes, RouterModule } from '@angular/router';
+import { DirectUsageExampleComponent } from './direct-usage-example/direct-usage-example.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'getting-started', component: SimpleExampleComponent },
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
   { path: 'fields/relationship', component: RelationshipFieldExampleComponent },
   { path: 'fields/date', component: DateFieldExampleComponent },
   { path: 'validation', component: ValidationExampleComponent },
+  { path: 'direct-usage', component: DirectUsageExampleComponent },
   { path: '', redirectTo: '/getting-started', pathMatch: 'full' }
 ];
 
@@ -42,6 +45,7 @@ const appRoutes: Routes = [
     CommonModule,
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     TabsModule.forRoot(),
     NgAutoFormModule.forRoot({ relationshipService: RelationshipFieldExampleService }),
     RouterModule.forRoot(appRoutes),
@@ -59,7 +63,8 @@ const appRoutes: Routes = [
     LogicalFieldExampleComponent,
     RelationshipFieldExampleComponent,
     DateFieldExampleComponent,
-    ValidationExampleComponent
+    ValidationExampleComponent,
+    DirectUsageExampleComponent
   ],
   exports: [
     RouterModule

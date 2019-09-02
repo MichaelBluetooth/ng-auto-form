@@ -60,7 +60,19 @@ import { RelationshipOptionsService, RelationshipOptionsServiceDefault } from '.
   ],
   exports: [
     AfFormComponent,
-    AfFieldComponent
+    AfFieldComponent,
+    AfRelationshipFieldModule,
+    AfTextFieldModule,
+    AfNumberFieldModule,
+    AfNFPAFieldModule,
+    AfMemoFieldModule,
+    AfLogicalFieldModule,
+    AfListFieldModule,
+    AfLinkFieldModule,
+    AfImageListFieldModule,
+    AfFileFieldModule,
+    AfDateFieldModule,
+    AfCasFieldModule
   ]
 })
 export class NgAutoFormModule {

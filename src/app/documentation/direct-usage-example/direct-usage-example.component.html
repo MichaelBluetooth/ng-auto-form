@@ -1,0 +1,40 @@
+<h2>Direct Usage of Controls</h2>
+<p>You can use the individual controls directly. This can be helpful when building more complicated forms that the
+  <code>af-form</code> component can't handle. The example below uses angulars reactive forms module to build a more
+  complex form</p>
+
+<form [formGroup]="myForm">
+  <div class="row">
+    <div class="col-md-12">
+      <label>Text Field</label>
+      <af-text-field formControlName="textField"></af-text-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Multi-List Field</label>
+      <af-multi-list-field formControlName="multiListField" [listOpts]="['', 'one', 'two', 'three']"></af-multi-list-field>
+    </div>
+  </div>
+  <div class="row" formGroupName="myFormSubGroup">
+    <div class="col-md-4">
+      <label>List Field</label>
+      <af-list-field formControlName="listField" [listOpts]="['', 'one', 'two', 'three']"></af-list-field>
+    </div>
+    <div class="col-md-4">
+      <label>Date Field</label>
+      <af-date-field formControlName="dateField"></af-date-field>
+    </div>
+    <div class="col-md-4">
+      <label>Number Field</label>
+      <af-number-field formControlName="numberField"></af-number-field>
+    </div>
+  </div>
+
+  <br>
+  <button class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+</form>
+
+<br>
+<h3>Form Value:</h3>
+{{this.myForm.value | json}}
