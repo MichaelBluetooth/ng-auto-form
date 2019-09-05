@@ -1,5 +1,5 @@
 import { AfFieldType, AfFieldValidationName } from './../../models/af-field.model';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
@@ -14,9 +14,6 @@ describe('AfFormComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
         NgAutoFormModule
       ]
     }).compileComponents();

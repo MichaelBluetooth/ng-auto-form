@@ -30,7 +30,6 @@ import { RelationshipOptionsService, RelationshipOptionsServiceDefault } from '.
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     TypeaheadModule.forRoot(),

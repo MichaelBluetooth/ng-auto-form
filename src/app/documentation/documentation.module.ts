@@ -19,6 +19,7 @@ import { RelationshipFieldExampleComponent } from './relationship-field-example/
 import { DateFieldExampleComponent } from './date-field-example/date-field-example.component';
 import { ValidationExampleComponent } from './validation-example/validation-example.component';
 import { Routes, RouterModule } from '@angular/router';
+import { FileFieldExampleComponent } from './file-field-example/file-field-example.component';
 import { DirectUsageExampleComponent } from './direct-usage-example/direct-usage-example.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
   { path: 'fields/logical', component: LogicalFieldExampleComponent },
   { path: 'fields/relationship', component: RelationshipFieldExampleComponent },
   { path: 'fields/date', component: DateFieldExampleComponent },
+  { path: 'fields/file', component: FileFieldExampleComponent },
   { path: 'validation', component: ValidationExampleComponent },
   { path: 'direct-usage', component: DirectUsageExampleComponent },
   { path: '', redirectTo: '/getting-started', pathMatch: 'full' }
@@ -64,6 +66,7 @@ const appRoutes: Routes = [
     RelationshipFieldExampleComponent,
     DateFieldExampleComponent,
     ValidationExampleComponent,
+    FileFieldExampleComponent
     DirectUsageExampleComponent
   ],
   exports: [
