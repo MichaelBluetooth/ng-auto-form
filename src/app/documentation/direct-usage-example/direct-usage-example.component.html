@@ -43,6 +43,51 @@
 <h4>Form Value:</h4>
 {{myForm.value | json}}
 <br>
+<br>
+
+<tabset>
+  <tab heading="Template">
+    <pre><code>            
+      &#x3C;form [formGroup]=&#x22;myForm&#x22;&#x3E;
+      &#x3C;div class=&#x22;row&#x22;&#x3E;
+        &#x3C;div class=&#x22;col-md-12&#x22;&#x3E;
+          &#x3C;label&#x3E;Text Field&#x3C;/label&#x3E;
+          &#x3C;af-text-field formControlName=&#x22;textField&#x22;&#x3E;&#x3C;/af-text-field&#x3E;
+        &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+      &#x3C;div class=&#x22;row&#x22;&#x3E;
+        &#x3C;div class=&#x22;col-md-12&#x22;&#x3E;
+          &#x3C;label&#x3E;Multi-List Field&#x3C;/label&#x3E;
+          &#x3C;af-multi-list-field formControlName=&#x22;multiListField&#x22; [listOpts]=&#x22;[&#x27;&#x27;, &#x27;one&#x27;, &#x27;two&#x27;, &#x27;three&#x27;]&#x22;&#x3E;
+          &#x3C;/af-multi-list-field&#x3E;
+        &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+      &#x3C;div class=&#x22;row&#x22; formGroupName=&#x22;myFormSubGroup&#x22;&#x3E;
+        &#x3C;div class=&#x22;col-md-4&#x22;&#x3E;
+          &#x3C;label&#x3E;List Field&#x3C;/label&#x3E;
+          &#x3C;af-list-field formControlName=&#x22;listField&#x22; [listOpts]=&#x22;[&#x27;&#x27;, &#x27;one&#x27;, &#x27;two&#x27;, &#x27;three&#x27;]&#x22;&#x3E;&#x3C;/af-list-field&#x3E;
+        &#x3C;/div&#x3E;
+        &#x3C;div class=&#x22;col-md-4&#x22;&#x3E;
+          &#x3C;label&#x3E;Date Field&#x3C;/label&#x3E;
+          &#x3C;af-date-field formControlName=&#x22;dateField&#x22;&#x3E;&#x3C;/af-date-field&#x3E;
+        &#x3C;/div&#x3E;
+        &#x3C;div class=&#x22;col-md-4&#x22;&#x3E;
+          &#x3C;label&#x3E;Number Field&#x3C;/label&#x3E;
+          &#x3C;af-number-field formControlName=&#x22;numberField&#x22;&#x3E;&#x3C;/af-number-field&#x3E;
+        &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+    
+      &#x3C;br&#x3E;
+      &#x3C;button class=&#x22;btn btn-primary&#x22; [disabled]=&#x22;myForm.invalid&#x22;&#x3E;Submit&#x3C;/button&#x3E;
+    &#x3C;/form&#x3E;
+        </code></pre>
+  </tab>
+  <tab heading="Component">
+    <pre><code>
+      {{componentStr}}      
+      </code></pre>
+  </tab>
+</tabset>
 
 <br>
 <h3>Model-driven Forms</h3>
