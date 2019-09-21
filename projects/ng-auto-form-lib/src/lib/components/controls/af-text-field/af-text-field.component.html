@@ -1,3 +1,4 @@
 <div *ngIf="readOnly">{{textValue}}</div>
 <input *ngIf="!readOnly" type="text" class="form-control" [afFocus]="focus" [disabled]="disabled" [ngModel]="textValue" (ngModelChange)="onValueChange($event)"
 />
+<af-control-messages [control]="control"></af-control-messages>

@@ -1,18 +1,11 @@
 import { AfCasNumberValidationService } from './validation/af-cas-number-validation.service';
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, AbstractControl, ValidationErrors, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'af-cas-field',
   templateUrl: './af-cas-field.component.html',
-  styleUrls: ['./af-cas-field.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfCasFieldComponent),
-    }
-  ]
+  styleUrls: ['./af-cas-field.component.css']
 })
 export class AfCasFieldComponent implements ControlValueAccessor {
 
@@ -21,8 +14,12 @@ export class AfCasFieldComponent implements ControlValueAccessor {
 
   textValue = null;
   disabled = false;
+  control: NgControl;
 
-  constructor(private casNumberValidatonService: AfCasNumberValidationService) { }
+  constructor(private casNumberValidatonService: AfCasNumberValidationService, private ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };

@@ -1,5 +1,5 @@
 import { AfFocusModule } from './../../../directives/af-focus.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgControl, AbstractControl } from '@angular/forms';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -18,6 +18,11 @@ import { AfMemoFieldModule } from './../af-memo-field/af-memo-field.module';
 import { AfNumberFieldModule } from './../af-number-field/af-number-field.module';
 import { AfTextFieldModule } from './../af-text-field/af-text-field.module';
 import { AfRelationshipFieldModule } from './../af-relationship-field/af-relationship-field.module';
+
+class MockNgControl extends NgControl {
+  control: AbstractControl;
+  viewToModelUpdate(newValue: any): void { }
+}
 
 describe('AfFieldComponent', () => {
   let component: AfFieldComponent;
@@ -46,6 +51,9 @@ describe('AfFieldComponent', () => {
       ],
       declarations: [
         AfFieldComponent
+      ],
+      providers: [
+        { provide: NgControl, useClass: MockNgControl }
       ]
     }).compileComponents();
   }));
@@ -344,5 +352,4 @@ describe('AfFieldComponent', () => {
       expect(field).toBeDefined();
     });
   });
-
 });

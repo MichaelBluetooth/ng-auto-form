@@ -1,11 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { By, BrowserModule } from '@angular/platform-browser';
-import { async, fakeAsync, ComponentFixture, TestBed, tick } from '@angular/core/testing';
+import { AfMemoFieldModule } from './af-memo-field.module';
+import { NgControl, AbstractControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 
 import { AfMemoFieldComponent } from './af-memo-field.component';
-import { AfFocusModule } from '../../../directives/af-focus.module';
+
+class MockNgControl extends NgControl {
+  control: AbstractControl;
+  viewToModelUpdate(newValue: any): void { }
+}
 
 describe('AfMemoFieldComponent', () => {
   let component: AfMemoFieldComponent;
@@ -14,12 +17,11 @@ describe('AfMemoFieldComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        AfFocusModule
+        AfMemoFieldModule
       ],
-      declarations: [AfMemoFieldComponent]
+      providers: [
+        { provide: NgControl, useClass: MockNgControl }
+      ]
     }).compileComponents();
   }));
 

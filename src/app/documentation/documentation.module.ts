@@ -21,7 +21,7 @@ import { ValidationExampleComponent } from './validation-example/validation-exam
 import { Routes, RouterModule } from '@angular/router';
 import { FileFieldExampleComponent } from './file-field-example/file-field-example.component';
 import { DirectUsageExampleComponent } from './direct-usage-example/direct-usage-example.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'getting-started', component: SimpleExampleComponent },
@@ -47,6 +47,7 @@ const appRoutes: Routes = [
     CommonModule,
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     TabsModule.forRoot(),
     NgAutoFormModule.forRoot({ relationshipService: RelationshipFieldExampleService }),
@@ -66,7 +67,7 @@ const appRoutes: Routes = [
     RelationshipFieldExampleComponent,
     DateFieldExampleComponent,
     ValidationExampleComponent,
-    FileFieldExampleComponent
+    FileFieldExampleComponent,
     DirectUsageExampleComponent
   ],
   exports: [

@@ -1,17 +1,10 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'af-link-field',
   templateUrl: './af-link-field.component.html',
-  styleUrls: ['./af-link-field.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfLinkFieldComponent),
-    }
-  ]
+  styleUrls: ['./af-link-field.component.css']
 })
 export class AfLinkFieldComponent implements ControlValueAccessor {
 
@@ -23,8 +16,12 @@ export class AfLinkFieldComponent implements ControlValueAccessor {
     text: null
   };
   disabled = false;
+  control: NgControl;
 
-  constructor() { }
+  constructor(ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   onTouchedCallback: () => void = () => { };
   onChangeCallback: (_: any) => void = () => { };

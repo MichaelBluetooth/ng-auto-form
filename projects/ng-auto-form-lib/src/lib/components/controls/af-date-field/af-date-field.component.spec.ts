@@ -1,10 +1,13 @@
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { By, BrowserModule } from '@angular/platform-browser';
+import { AfDateFieldModule } from './af-date-field.module';
+import { NgControl, AbstractControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AfDateFieldComponent } from './af-date-field.component';
-import { AfFocusModule } from '../../../directives/af-focus.module';
+
+class MockNgControl extends NgControl {
+  control: AbstractControl;
+  viewToModelUpdate(newValue: any): void { }
+}
 
 describe('AfDateFieldComponent', () => {
   let component: AfDateFieldComponent;
@@ -13,13 +16,11 @@ describe('AfDateFieldComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        BsDatepickerModule.forRoot(),
-        AfFocusModule
+        AfDateFieldModule
       ],
-      declarations: [AfDateFieldComponent]
+      providers: [
+        { provide: NgControl, useClass: MockNgControl }
+      ]
     }).compileComponents();
   }));
 

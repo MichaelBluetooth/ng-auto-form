@@ -1,8 +1,17 @@
+import { AfValidationModule } from './../../../validators/af-validation.module';
 import { AfFocusModule } from './../../../directives/af-focus.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule, NgControl, AbstractControl } from '@angular/forms';
 import { Directive, Output, Input, EventEmitter } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import { By, BrowserModule } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AfRelationshipFieldComponent } from './af-relationship-field.component';
+import { RelationshipOptionsService } from './af-relationship-options/relationship-options.service';
+
+class MockNgControl extends NgControl {
+    control: AbstractControl;
+    viewToModelUpdate(newValue: any): void { }
+}
 
 @Directive({
     // tslint:disable-next-line:directive-selector
@@ -24,14 +33,21 @@ describe('AfRelationshipFieldComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                AfFocusModule
+                CommonModule,
+                BrowserModule,
+                FormsModule,
+                AfFocusModule,
+                AfValidationModule
             ],
             declarations: [
                 AfRelationshipFieldComponent,
                 MockRelationshipOptionsDirective
+            ],
+            providers: [
+                RelationshipOptionsService,
+                { provide: NgControl, useClass: MockNgControl }
             ]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {

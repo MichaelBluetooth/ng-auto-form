@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { AfValidationService } from '../../../validators/af-validation.service';
+import { FormControl } from '@angular/forms';
+import { AfValidationService } from '../af-validation.service';
 
 @Component({
     selector: 'af-control-messages',

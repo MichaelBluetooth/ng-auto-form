@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
 import { AfListOptionsPipe } from './../af-list-options.pipe';
 
 @Component({
@@ -7,11 +7,6 @@ import { AfListOptionsPipe } from './../af-list-options.pipe';
   templateUrl: './af-list-field.component.html',
   styleUrls: ['./af-list-field.component.css'],
   providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfListFieldComponent),
-    },
     AfListOptionsPipe
   ]
 })
@@ -26,8 +21,12 @@ export class AfListFieldComponent implements ControlValueAccessor {
 
   selectedValue = null;
   disabled = false;
+  control: NgControl;
 
-  constructor(private afListOptionsPipe: AfListOptionsPipe) { }
+  constructor(private afListOptionsPipe: AfListOptionsPipe, ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };

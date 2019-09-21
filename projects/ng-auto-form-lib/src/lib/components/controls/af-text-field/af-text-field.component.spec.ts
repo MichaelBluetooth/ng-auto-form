@@ -1,10 +1,9 @@
-import { AfFocusModule } from './../../../directives/af-focus.module';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { By, BrowserModule } from '@angular/platform-browser';
-import { async, fakeAsync, ComponentFixture, TestBed, tick } from '@angular/core/testing';
-import { AfTextFieldComponent } from './af-text-field.component';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AfTextFieldModule } from './af-text-field.module';
 
 describe('AfTextFieldComponent', () => {
   let component: TestAfTextFieldComponent;
@@ -16,9 +15,11 @@ describe('AfTextFieldComponent', () => {
         CommonModule,
         BrowserModule,
         FormsModule,
-        AfFocusModule
+        AfTextFieldModule
       ],
-      declarations: [AfTextFieldComponent, TestAfTextFieldComponent]
+      declarations: [
+        TestAfTextFieldComponent
+      ]
     }).compileComponents();
   }));
 

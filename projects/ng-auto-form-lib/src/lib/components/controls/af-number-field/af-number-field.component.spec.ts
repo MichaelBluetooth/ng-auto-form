@@ -1,11 +1,11 @@
+import { AfValidationModule } from './../../../validators/af-validation.module';
 import { AfFocusModule } from './../../../directives/af-focus.module';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { By, BrowserModule } from '@angular/platform-browser';
-import { async, fakeAsync, ComponentFixture, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 
-import { NgAutoFormModule } from './../../../ng-auto-form.module';
 import { AfNumberFieldComponent } from './af-number-field.component';
 
 describe('AfNumberFieldComponent', () => {
@@ -18,7 +18,8 @@ describe('AfNumberFieldComponent', () => {
         CommonModule,
         BrowserModule,
         FormsModule,
-        AfFocusModule
+        AfFocusModule,
+        AfValidationModule
       ],
       declarations: [AfNumberFieldComponent, TestAfNumberFieldComponent]
     }).compileComponents();
@@ -119,7 +120,7 @@ describe('AfNumberFieldComponent', () => {
   </af-number-field>`
 })
 export class TestAfNumberFieldComponent {
-  @ViewChild('numberField') numberField: AfNumberFieldComponent;
+  @ViewChild('numberField', {static: true}) numberField: AfNumberFieldComponent;
 
   readOnly = false;
   disabled = false;

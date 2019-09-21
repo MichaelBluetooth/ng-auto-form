@@ -1,11 +1,15 @@
-import { AfFocusModule } from './../../../directives/af-focus.module';
+import { AfLinkFieldModule } from './af-link-field.module';
 import { DebugElement } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { By, BrowserModule } from '@angular/platform-browser';
+import {  AbstractControl, NgControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AfLinkFieldComponent } from './af-link-field.component';
+
+class MockNgControl extends NgControl {
+  control: AbstractControl;
+  viewToModelUpdate(newValue: any): void { }
+}
 
 describe('AfLinkFieldComponent', () => {
   let component: AfLinkFieldComponent;
@@ -14,13 +18,10 @@ describe('AfLinkFieldComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        AfFocusModule
+        AfLinkFieldModule
       ],
-      declarations: [
-        AfLinkFieldComponent
+      providers: [
+        { provide: NgControl, useClass: MockNgControl }
       ]
     })
       .compileComponents();

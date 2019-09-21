@@ -1,17 +1,10 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'af-logical-field',
   templateUrl: './af-logical-field.component.html',
-  styleUrls: ['./af-logical-field.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfLogicalFieldComponent),
-    }
-  ]
+  styleUrls: ['./af-logical-field.component.css']
 })
 export class AfLogicalFieldComponent implements ControlValueAccessor {
 
@@ -20,6 +13,12 @@ export class AfLogicalFieldComponent implements ControlValueAccessor {
 
   logicalValue = null;
   disabled = false;
+  control: NgControl;
+
+  constructor(ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };
@@ -40,7 +39,7 @@ export class AfLogicalFieldComponent implements ControlValueAccessor {
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
-  
+
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }

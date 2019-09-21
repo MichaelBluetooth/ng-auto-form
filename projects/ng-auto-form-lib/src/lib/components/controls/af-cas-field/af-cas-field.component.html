@@ -2,3 +2,4 @@
 <input [afFocus]="focus" *ngIf="!readOnly" afCASNumber type="text" class="form-control" [disabled]="disabled" [ngModel]="textValue" (ngModelChange)="onValueChange($event)"
 />
 <span *ngIf="isInvalidCASNo()" class="warning text-warning">Value is not a valid CAS Number</span>
+<af-control-messages [control]="control"></af-control-messages>

@@ -1,8 +1,13 @@
-import { BrowserModule, By } from '@angular/platform-browser';
+import { AfImageListFieldModule } from './af-image-list-field.module';
+import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { NgControl, AbstractControl } from '@angular/forms';
 import { AfImageListFieldComponent } from './af-image-list-field.component';
+
+class MockNgControl extends NgControl {
+  control: AbstractControl;
+  viewToModelUpdate(newValue: any): void { }
+}
 
 describe('AfImageListFieldComponent', () => {
   let component: AfImageListFieldComponent;
@@ -11,13 +16,11 @@ describe('AfImageListFieldComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
+        AfImageListFieldModule
       ],
-      declarations: [
-        AfImageListFieldComponent
-      ]
+      providers: [
+        { provide: NgControl, useClass: MockNgControl }
+    ]
     }).compileComponents();
   }));
 

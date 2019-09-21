@@ -1,17 +1,10 @@
-import { Component, OnInit, Input, forwardRef, HostListener, ElementRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, OnInit, Input, HostListener, ElementRef } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'af-image-list-field',
   templateUrl: './af-image-list-field.component.html',
-  styleUrls: ['./af-image-list-field.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfImageListFieldComponent),
-    }
-  ]
+  styleUrls: ['./af-image-list-field.component.css']
 })
 export class AfImageListFieldComponent implements ControlValueAccessor, OnInit {
 
@@ -23,8 +16,12 @@ export class AfImageListFieldComponent implements ControlValueAccessor, OnInit {
   showOptionsPane = false;
   selectableOptions: any[] = [];
   disabled = false;
+  control: NgControl;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };

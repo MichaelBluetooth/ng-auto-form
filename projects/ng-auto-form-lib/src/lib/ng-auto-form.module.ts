@@ -1,18 +1,15 @@
 import { AfFocusModule } from './directives/af-focus.module';
 import { NgModule, ModuleWithProviders, Type } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
-import { AfValidationService } from './validators/af-validation.service';
 import { AfFormBuilderService } from './components/af-form/af-form-builder.service';
-
 import { AfFieldComponent } from './components/controls/af-field/af-field.component';
 import { AfFormComponent } from './components/af-form/af-form.component';
-import { AfControlMessagesComponent } from './components/controls/af-control-message/af-control-message.component';
+import { AfControlMessagesComponent } from './validators/af-control-message/af-control-message.component';
 import { AfRelationshipFieldModule } from './components/controls/af-relationship-field/af-relationship-field.module';
 import { AfCasFieldModule } from './components/controls/af-cas-field/af-caf-field.module';
 import { AfFileFieldModule } from './components/controls/af-file-field/af-file-field.module';
@@ -26,6 +23,7 @@ import { AfNFPAFieldModule } from './components/controls/af-nfpa-field/af-nfpa-f
 import { AfImageListFieldModule } from './components/controls/af-image-list-field/af-image-list-field.module';
 import { AfDateFieldModule } from './components/controls/af-date-field/af-date-field.module';
 import { RelationshipOptionsService, RelationshipOptionsServiceDefault } from './components/controls/af-relationship-field/af-relationship-options/relationship-options.service';
+import { AfValidationModule } from './validators/af-validation.module';
 
 @NgModule({
   imports: [
@@ -46,15 +44,15 @@ import { RelationshipOptionsService, RelationshipOptionsServiceDefault } from '.
     AfFileFieldModule.forRoot(),
     AfDateFieldModule.forRoot(),
     AfCasFieldModule.forRoot(),
-    AfFocusModule.forRoot()
+    AfFocusModule.forRoot(),
+
+    AfValidationModule
   ],
   declarations: [
     AfFieldComponent,
     AfFormComponent,
-    AfControlMessagesComponent
   ],
   providers: [
-    AfValidationService,
     AfFormBuilderService
   ],
   exports: [

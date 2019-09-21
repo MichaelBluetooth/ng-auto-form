@@ -1,19 +1,12 @@
-import { Component, forwardRef, Input, HostListener, ElementRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, Input, HostListener, ElementRef } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Subject, Subscription, Observable } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged, flatMap, delay } from 'rxjs/operators';
 
 @Component({
   selector: 'af-relationship-field',
   templateUrl: './af-relationship-field.component.html',
-  styleUrls: ['./af-relationship-field.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfRelationshipFieldComponent),
-    }
-  ]
+  styleUrls: ['./af-relationship-field.component.css']
 })
 export class AfRelationshipFieldComponent implements ControlValueAccessor {
   @Input() readOnly = false;
@@ -28,8 +21,11 @@ export class AfRelationshipFieldComponent implements ControlValueAccessor {
   waiting = false;
   keyUp = new Subject<any>();
   searchSubscription: Subscription;
+  control: NgControl;
 
-  constructor(private elementRef: ElementRef) {
+  constructor(ngControl: NgControl, private elementRef: ElementRef) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
     this.keyUp
       .pipe(map(event => {
         if (this.searchSubscription) {

@@ -11,3 +11,4 @@
 </div>
 <af-relationship-options class="options" *ngIf="displayOptionsPanel" [displayNameField]="displayNameField" [relationshipServiceConfig]="relationshipServiceConfig"
   [filterValue]="filterValue" (optionSelected)="select($event)" (waiting)="startWaiting()" (waitingStop)="stopWaiting()"></af-relationship-options>
+<af-control-messages [control]="control"></af-control-messages>

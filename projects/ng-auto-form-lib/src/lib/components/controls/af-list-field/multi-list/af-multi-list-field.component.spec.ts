@@ -1,10 +1,13 @@
-import { AfFocusModule } from './../../../../directives/af-focus.module';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { By, BrowserModule } from '@angular/platform-browser';
+import { NgControl, AbstractControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AfMultiListFieldComponent } from './af-multi-list-field.component';
-import { AfListOptionsPipe } from './../af-list-options.pipe';
+import { AfListFieldModule } from './../af-list-field.module';
+
+class MockNgControl extends NgControl {
+  control: AbstractControl;
+  viewToModelUpdate(newValue: any): void { }
+}
 
 describe('AfMultiListFieldComponent', () => {
   let component: AfMultiListFieldComponent;
@@ -13,14 +16,10 @@ describe('AfMultiListFieldComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        AfFocusModule
+        AfListFieldModule
       ],
-      declarations: [
-        AfListOptionsPipe,
-        AfMultiListFieldComponent
+      providers: [
+        { provide: NgControl, useClass: MockNgControl }
       ]
     }).compileComponents();
   }));

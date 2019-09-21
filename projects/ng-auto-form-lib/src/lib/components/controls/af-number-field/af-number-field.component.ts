@@ -1,17 +1,10 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'af-number-field',
   templateUrl: './af-number-field.component.html',
-  styleUrls: ['./af-number-field.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfNumberFieldComponent),
-    }
-  ]
+  styleUrls: ['./af-number-field.component.css']
 })
 export class AfNumberFieldComponent implements ControlValueAccessor {
 
@@ -20,6 +13,12 @@ export class AfNumberFieldComponent implements ControlValueAccessor {
 
   numberValue = null;
   disabled = false;
+  control: NgControl;
+
+  constructor(ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };

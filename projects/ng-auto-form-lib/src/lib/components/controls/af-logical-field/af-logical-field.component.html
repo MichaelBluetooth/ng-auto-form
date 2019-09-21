@@ -1,3 +1,4 @@
 <div *ngIf="readOnly">{{logicalValue}}</div>
-<input *ngIf="!readOnly" type="checkbox" class="form-control pull-left" [afFocus]="focus" [disabled]="disabled" [ngModel]="logicalValue"
-        (ngModelChange)="onValueChange($event)" />
+<input *ngIf="!readOnly" type="checkbox" class="form-control pull-left" [afFocus]="focus" [disabled]="disabled"
+        [ngModel]="logicalValue" (ngModelChange)="onValueChange($event)" />
+<af-control-messages [control]="control"></af-control-messages>

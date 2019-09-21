@@ -1,17 +1,10 @@
-import { Component, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'af-nfpa-field',
   templateUrl: './af-nfpa-field.component.html',
-  styleUrls: ['./af-nfpa-field.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfNFPAFieldComponent),
-    }
-  ]
+  styleUrls: ['./af-nfpa-field.component.css']
 })
 export class AfNFPAFieldComponent implements ControlValueAccessor {
 
@@ -25,8 +18,12 @@ export class AfNFPAFieldComponent implements ControlValueAccessor {
     special: null
   };
   disabled = false;
+  control: NgControl;
 
-  constructor() { }
+  constructor(ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };

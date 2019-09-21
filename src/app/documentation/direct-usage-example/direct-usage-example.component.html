@@ -1,6 +1,9 @@
 <h2>Direct Usage of Controls</h2>
 <p>You can use the individual controls directly. This can be helpful when building more complicated forms that the
-  <code>af-form</code> component can't handle. The example below uses angulars reactive forms module to build a more
+  <code>af-form</code> component can't handle.</p>
+
+<h3>Reactive Forms</h3>
+<p>The example below uses angulars reactive forms module to build a more
   complex form</p>
 
 <form [formGroup]="myForm">
@@ -13,7 +16,8 @@
   <div class="row">
     <div class="col-md-12">
       <label>Multi-List Field</label>
-      <af-multi-list-field formControlName="multiListField" [listOpts]="['', 'one', 'two', 'three']"></af-multi-list-field>
+      <af-multi-list-field formControlName="multiListField" [listOpts]="['', 'one', 'two', 'three']">
+      </af-multi-list-field>
     </div>
   </div>
   <div class="row" formGroupName="myFormSubGroup">
@@ -36,5 +40,33 @@
 </form>
 
 <br>
-<h3>Form Value:</h3>
-{{this.myForm.value | json}}
+<h4>Form Value:</h4>
+{{myForm.value | json}}
+<br>
+
+<br>
+<h3>Model-driven Forms</h3>
+<p>The example below uses angulars forms module (e.g. ngModel) to build a more
+  complex form.</p>
+
+<div class="row">
+  <div class="col-md-12">
+    <label>Text Field</label>
+    <af-text-field [(ngModel)]="myModelData.modelTextField"></af-text-field>
+  </div>
+  <div class="col-md-6">
+    <label>Number Field</label>
+    <af-number-field [(ngModel)]="myModelData.modelNumberField"></af-number-field>
+  </div>
+  <div class="col-md-6">
+    <!-- <label>List Field</label>
+    <af-text-field required [(ngModel)]="myModelData.modelNumberField"></af-text-field> -->
+  </div>
+</div>
+
+<br>
+<h4>Form Value:</h4>
+{{myModelData | json}}
+<br>
+
+<br>

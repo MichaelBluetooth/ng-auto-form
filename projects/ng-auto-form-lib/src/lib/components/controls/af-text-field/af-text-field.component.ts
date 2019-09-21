@@ -1,17 +1,10 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'af-text-field',
   templateUrl: './af-text-field.component.html',
-  styleUrls: ['./af-text-field.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfTextFieldComponent),
-    }
-  ]
+  styleUrls: ['./af-text-field.component.css']
 })
 export class AfTextFieldComponent implements ControlValueAccessor {
 
@@ -20,8 +13,12 @@ export class AfTextFieldComponent implements ControlValueAccessor {
 
   textValue = null;
   disabled = false;
+  control: NgControl;
 
-  constructor() { }
+  constructor(ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };

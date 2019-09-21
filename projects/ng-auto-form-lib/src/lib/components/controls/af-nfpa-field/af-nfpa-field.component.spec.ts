@@ -1,9 +1,13 @@
-import { AfFocusModule } from './../../../directives/af-focus.module';
+import { AfNFPAFieldModule } from './af-nfpa-field.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AfNFPAFieldComponent } from './af-nfpa-field.component';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { By, BrowserModule } from '@angular/platform-browser';
+import { NgControl, AbstractControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+
+class MockNgControl extends NgControl {
+  control: AbstractControl;
+  viewToModelUpdate(newValue: any): void { }
+}
 
 describe('AfNfpaFieldComponent', () => {
   let component: AfNFPAFieldComponent;
@@ -12,12 +16,11 @@ describe('AfNfpaFieldComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        AfFocusModule        
+        AfNFPAFieldModule
       ],
-      declarations: [AfNFPAFieldComponent]
+      providers: [
+        { provide: NgControl, useClass: MockNgControl }
+      ]
     })
       .compileComponents();
   }));
@@ -68,7 +71,7 @@ describe('AfNfpaFieldComponent', () => {
       expect(inputs.length).toBe(4);
     });
 
-    it('should have the expected values selected', () => {
+    it('should have the expected values selected', async(() => {
       fixture.whenStable().then(() => {
         const flammibilitySelect = fixture.debugElement.query(By.css('.nfpa-flamibility select')).nativeElement;
         expect(flammibilitySelect.selectedOptions.length).toBe(1);
@@ -86,6 +89,6 @@ describe('AfNfpaFieldComponent', () => {
         expect(specialSelect.selectedOptions.length).toBe(1);
         expect(specialSelect.selectedOptions[0].value).toBe('ACID');
       });
-    });
+    }));
   });
 });

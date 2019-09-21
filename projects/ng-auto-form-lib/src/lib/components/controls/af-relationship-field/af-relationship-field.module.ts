@@ -5,12 +5,14 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { AfRelationshipOptionsComponent } from './af-relationship-options/af-relationship-options.component';
 import { AfRelationshipFieldComponent } from './af-relationship-field.component';
+import { AfValidationModule } from '../../../validators/af-validation.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        AfFocusModule
+        AfFocusModule,
+        AfValidationModule
     ],
     declarations: [
         AfRelationshipFieldComponent,

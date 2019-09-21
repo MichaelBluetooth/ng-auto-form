@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { AfListFieldComponent } from './list/af-list-field.component';
 import { AfListOptionsPipe } from './af-list-options.pipe';
 import { AfMultiListFieldComponent } from './multi-list/af-multi-list-field.component';
+import { AfValidationModule } from '../../../validators/af-validation.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        AfFocusModule
+        AfFocusModule,
+        AfValidationModule
     ],
     declarations: [
         AfListFieldComponent,

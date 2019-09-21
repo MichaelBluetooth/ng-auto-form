@@ -1,29 +1,29 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'af-memo-field',
   templateUrl: './af-memo-field.component.html',
-  styleUrls: ['./af-memo-field.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfMemoFieldComponent),
-    }
-  ]
+  styleUrls: ['./af-memo-field.component.css']
 })
 export class AfMemoFieldComponent implements ControlValueAccessor, OnInit {
 
   @Input() rows = 6;
   @Input() cols = 40;
-  @Input() readOnly  = false;
+  @Input() readOnly = false;
   @Input() focus = false;
 
   memoValue = null;
   disabled = false;
   defaultRows = 6;
   defaultCols = 30;
+  control: NgControl;
+
+  constructor(ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   ngOnInit() {
     if (!this.rows) {

@@ -1,5 +1,5 @@
 import { AfFieldValidation, AfFieldValidationName } from './../../../models/af-field.model';
-import { FormGroup, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { FormGroup, NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
 import { AfField, AfFieldType } from '../../../models/af-field.model';
 
@@ -7,13 +7,13 @@ import { AfField, AfFieldType } from '../../../models/af-field.model';
   selector: 'af-field',
   templateUrl: './af-field.component.html',
   styleUrls: ['./af-field.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfFieldComponent),
-    }
-  ]
+  // providers: [
+  //   {
+  //     provide: NG_VALUE_ACCESSOR,
+  //     multi: true,
+  //     useExisting: forwardRef(() => AfFieldComponent),
+  //   }
+  // ]
 })
 export class AfFieldComponent implements ControlValueAccessor {
 
@@ -21,8 +21,12 @@ export class AfFieldComponent implements ControlValueAccessor {
   @Input() field: AfField = null;
 
   innerValue: any = null;
+  control: NgControl;
 
-  constructor() { }
+  constructor(ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   getLabelClass(): string {
     return 'label ' + (this.field.tooltip ? 'has-tooltip ' : '') + (this.isFieldRequired() ? 'label-required' : '');

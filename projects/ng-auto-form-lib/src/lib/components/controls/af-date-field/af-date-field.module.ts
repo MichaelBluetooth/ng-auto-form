@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AfDateFieldComponent } from './af-date-field.component';
+import { AfValidationModule } from '../../../validators/af-validation.module';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { AfDateFieldComponent } from './af-date-field.component';
         FormsModule,
         BrowserAnimationsModule,
         BsDatepickerModule.forRoot(),
-        AfFocusModule
+        AfFocusModule,
+        AfValidationModule
     ],
     declarations: [
         AfDateFieldComponent

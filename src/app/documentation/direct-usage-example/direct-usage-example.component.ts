@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DirectUsageExampleComponent implements OnInit {
 
   myForm: FormGroup;
+  myModelData: any = {};
 
   constructor(private formBuilder: FormBuilder) { }
 

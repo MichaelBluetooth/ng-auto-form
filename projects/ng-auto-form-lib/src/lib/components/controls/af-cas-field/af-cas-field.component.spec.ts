@@ -1,10 +1,14 @@
+import { AfCasFieldModule } from './af-caf-field.module';
 import { AfCasNumberValidationService } from './validation/af-cas-number-validation.service';
 import { AfCasFieldComponent } from './af-cas-field.component';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { By, BrowserModule } from '@angular/platform-browser';
+import { NgControl, AbstractControl } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AfFocusModule } from '../../../directives/af-focus.module';
+
+class MockNgControl extends NgControl {
+  control: AbstractControl;
+  viewToModelUpdate(newValue: any): void { }
+}
 
 describe('AfCasFieldComponent', () => {
   let component: AfCasFieldComponent;
@@ -14,13 +18,12 @@ describe('AfCasFieldComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        AfFocusModule
+        AfCasFieldModule
       ],
-      declarations: [AfCasFieldComponent],
-      providers: [AfCasNumberValidationService]
+      providers: [
+        AfCasNumberValidationService,
+        { provide: NgControl, useClass: MockNgControl }
+      ]
     }).compileComponents();
   }));
 

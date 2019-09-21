@@ -1,17 +1,10 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
     selector: 'af-date-field',
     templateUrl: './af-date-field.component.html',
-    styleUrls: ['./af-date-field.component.css'],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            multi: true,
-            useExisting: forwardRef(() => AfDateFieldComponent),
-        }
-    ]
+    styleUrls: ['./af-date-field.component.css']
 })
 export class AfDateFieldComponent implements OnInit, ControlValueAccessor {
 
@@ -26,8 +19,12 @@ export class AfDateFieldComponent implements OnInit, ControlValueAccessor {
         dateInputFormat: 'MM/DD/YYYY'
     };
     disabled = false;
+    control: NgControl;
 
-    constructor() { }
+    constructor(ngControl: NgControl) {
+        this.control = ngControl;
+        this.control.valueAccessor = this;
+    }
 
     ngOnInit() {
         this.bsConfig = {

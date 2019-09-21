@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { AfListOptionsPipe } from './../af-list-options.pipe';
 
 @Component({
@@ -7,11 +7,6 @@ import { AfListOptionsPipe } from './../af-list-options.pipe';
   templateUrl: './af-multi-list-field.component.html',
   styleUrls: ['./af-multi-list-field.component.css'],
   providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfMultiListFieldComponent),
-    },
     AfListOptionsPipe
   ]
 })
@@ -27,8 +22,12 @@ export class AfMultiListFieldComponent implements ControlValueAccessor, OnInit {
   selectedValue = null;
   disabled = false;
   filter = '';
+  control: NgControl;
 
-  constructor(private afListOptionsPipe: AfListOptionsPipe) { }
+  constructor(private afListOptionsPipe: AfListOptionsPipe, ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };

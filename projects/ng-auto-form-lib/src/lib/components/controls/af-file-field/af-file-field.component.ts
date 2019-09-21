@@ -1,24 +1,21 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'af-file-field',
   templateUrl: './af-file-field.component.html',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => AfFileFieldComponent),
-    }
-  ]
 })
 export class AfFileFieldComponent implements ControlValueAccessor {
 
   @Input() acceptedfileTypes = '';
 
   fileList: FileList = null;
+  control: NgControl;
 
-  constructor() { }
+  constructor(ngControl: NgControl) {
+    this.control = ngControl;
+    this.control.valueAccessor = this;
+  }
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };
