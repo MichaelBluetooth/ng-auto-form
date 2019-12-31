@@ -1,6 +1,7 @@
 import { AfDateFieldModule } from './af-date-field.module';
 import { NgControl, AbstractControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AfDateFieldComponent } from './af-date-field.component';
 
@@ -16,6 +17,7 @@ describe('AfDateFieldComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        BrowserAnimationsModule,
         AfDateFieldModule
       ],
       providers: [

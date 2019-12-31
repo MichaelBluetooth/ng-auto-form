@@ -22,6 +22,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FileFieldExampleComponent } from './file-field-example/file-field-example.component';
 import { DirectUsageExampleComponent } from './direct-usage-example/direct-usage-example.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'getting-started', component: SimpleExampleComponent },
@@ -45,7 +46,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

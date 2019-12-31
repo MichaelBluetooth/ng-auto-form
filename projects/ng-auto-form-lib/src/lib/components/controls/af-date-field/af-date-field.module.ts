@@ -1,6 +1,5 @@
 import { AfFocusModule } from './../../../directives/af-focus.module';
 import { NgModule, ModuleWithProviders  } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -11,7 +10,6 @@ import { AfValidationModule } from '../../../validators/af-validation.module';
     imports: [
         CommonModule,
         FormsModule,
-        BrowserAnimationsModule,
         BsDatepickerModule.forRoot(),
         AfFocusModule,
         AfValidationModule
