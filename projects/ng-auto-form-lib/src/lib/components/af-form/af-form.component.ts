@@ -1,5 +1,5 @@
 import { AfFormBuilderService } from './af-form-builder.service';
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, KeyValueDiffer, KeyValueDiffers } from '@angular/core';
 import { AfForm } from '../../models/af-form.model';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -32,8 +32,9 @@ export class AfFormComponent implements OnInit, OnChanges {
 
   formChangesSubscription: Subscription;
   fieldsSubscription = {};
+  private formDataDiffer: KeyValueDiffer<string, any>;
 
-  constructor(private fb: AfFormBuilderService) {
+  constructor(private fb: AfFormBuilderService, private differs: KeyValueDiffers) {
     this.form = this.fb.buildEmptyForm();
   }
 
@@ -41,6 +42,7 @@ export class AfFormComponent implements OnInit, OnChanges {
     this.buildForm();
     this.valid = this.form.valid;
     this.formValidityChange.emit(this.valid);
+    this.formDataDiffer = this.differs.find(this.formData).create();
   }
 
   /*
@@ -50,6 +52,14 @@ export class AfFormComponent implements OnInit, OnChanges {
   ngOnChanges(changes) {
     this.buildForm();
     this.valid = this.form.valid;
+  }
+
+  
+  ngDoCheck(): void {
+    const changes = this.formDataDiffer.diff(this.formData);
+    if (changes) {
+      this.buildForm();
+    }
   }
 
   buildForm(): void {

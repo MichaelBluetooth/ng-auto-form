@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgAutoFormModule } from './../../ng-auto-form.module';
 import { AfFormComponent } from './af-form.component';
+import { By } from '@angular/platform-browser';
 
 describe('AfFormComponent', () => {
   let component: AfFormComponent;
@@ -150,4 +151,41 @@ describe('AfFormComponent', () => {
       expect(component.formValidityChange.emit).toHaveBeenCalledWith(false);
     });
   });
+
+  describe('changing a form value outside of the component', () => {
+    it('should register the value new value', () => {
+      component.formData = {
+        myField: 'originalValue'
+      };
+      component.formDefinition = {
+        layout: [['myField']],
+        fields: [
+          {
+            name: 'myField',
+            label: 'Test Field',
+            fieldType: AfFieldType.Text,
+            tooltip: '',
+            readOnly: false,
+            focus: false
+          }
+        ]
+      };
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(fixture.debugElement.query(By.css('input')).nativeElement.value).toBe('originalValue');
+        }).then(() => {
+          component.formData.myField = 'New Value';
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            fixture.detectChanges();
+            fixture.whenStable().then(() => {
+              expect(fixture.debugElement.query(By.css('input')).nativeElement.value).toBe('New Value');
+            });
+          });
+        });
+      });
+    });
+  })
 });
