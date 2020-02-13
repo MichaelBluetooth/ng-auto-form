@@ -79,7 +79,6 @@ describe('AfFormComponent', () => {
   describe('changing a form value', () => {
     it('should emit changes to the form data and preserve and data not included in the layout', () => {
       spyOn(component.formDataChange, 'emit');
-      spyOn(component.formFieldDataChange, 'emit');
 
       component.formData = {
         myField: '',
@@ -112,7 +111,6 @@ describe('AfFormComponent', () => {
       textInput.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       expect(component.formDataChange.emit).toHaveBeenCalledWith({ myField: 'New Value', myFieldThatIsNotInTheLayout: 'test_value' });
-      expect(component.formFieldDataChange.emit).toHaveBeenCalledWith({ fieldName: 'myField', value: 'New Value' });
     });
 
     it('should emit an event when the form validity state changes', () => {

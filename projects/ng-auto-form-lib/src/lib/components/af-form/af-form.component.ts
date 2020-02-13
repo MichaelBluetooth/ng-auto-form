@@ -21,9 +21,6 @@ export class AfFormComponent implements OnInit, OnChanges {
   /** When any value is changed */
   @Output() formDataChange = new EventEmitter<any>();
 
-  /** When a specific field is changed. Format is {fieldName: 'myTextField', value: 'My New Value'} */
-  @Output() formFieldDataChange = new EventEmitter<any>();
-
   /** Whenever the form validity state is changed */
   @Output() formValidityChange = new EventEmitter<any>();
 
@@ -64,14 +61,6 @@ export class AfFormComponent implements OnInit, OnChanges {
 
   buildForm(): void {
     this.fb.buildForm(this.form, this.formData, this.formDefinition);
-    for (const field in this.form.controls) {
-      if (this.form.controls.hasOwnProperty(field) && !this.fieldsSubscription[field]) {
-        this.fieldsSubscription[field] = this.form.controls[field].valueChanges.subscribe(newValue => {
-          this.formFieldDataChange.emit({ fieldName: field, value: newValue });
-        });
-      }
-    }
-
     if (!this.formChangesSubscription) {
       this.formChangesSubscription = this.form.valueChanges.subscribe(data => {
         if (this.valid !== this.form.valid) {
